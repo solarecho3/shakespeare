@@ -35,15 +35,25 @@ why did we use them together?
 
 ### variables
 $t$ = time
+
 $o$ = observation
+
 $O$ = set of observations
+
 $a$ = action
+
 $A$ = set of actions
+
 $\succ$ = indicates preference
+
 $\tau$ = trajectories
+
 $\sigma$ = trajectory segments
+
 $\pi$ = policy
+
 $\hat{r}$ = reward function estimate
+
 $\Bbb R$ = set of rewards
 
 References: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference

@@ -74,6 +74,10 @@ Will the tool be concerned with timeliness?
 
 ## references
 
-[https://openai.com/blog/instruction-following/]
-[https://openai.com/blog/deep-reinforcement-learning-from-human-preferences/]
-[https://github.com/openai/following-instructions-human-feedback]
+[Aligning Language Models to Follow Instructions](https://openai.com/blog/instruction-following/)
+
+[Learning from Human Preferences](https://openai.com/blog/deep-reinforcement-learning-from-human-preferences/)
+
+[InstructGPT: Training Language Models to Follow Instructions with Human Feedback](https://github.com/openai/following-instructions-human-feedback), [paper](https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
+
+[Baselines](https://github.com/openai/baselines/tree/master/baselines)

@@ -107,4 +107,4 @@ Will the tool be concerned with timeliness?
 ## development notes
 - 25 Jan 23. adam. initializing the repository, architecural design, white paper framing.
 
-	We've chosen the Model-View-Controller as the base design in order to prepare this library for scaling to new datasets and implementations. The repository will come complete with a well-defined wiki, licensing, and other scale requirements. We want to try and future-proof the design from initialization.
+	We've chosen the Model-View-Presenter as the base design in order to prepare this library for scaling to new datasets and implementations. The repository will come complete with a well-defined wiki, licensing, and other scale requirements. We want to try and future-proof the design from initialization. This design may change as the advantage becomes apparent.

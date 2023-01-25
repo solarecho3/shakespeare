@@ -81,3 +81,11 @@ Will the tool be concerned with timeliness?
 [InstructGPT: Training Language Models to Follow Instructions with Human Feedback](https://github.com/openai/following-instructions-human-feedback), [paper](https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
 
 [Baselines](https://github.com/openai/baselines/tree/master/baselines)
+
+[Let's build GPT: from scratch, in code, spelled out.](https://www.youtube.com/watch?v=kCc8FmEb1nY), [nanoGPT repo](https://github.com/karpathy/nanoGPT), [lecture repo](https://github.com/karpathy/ng-video-lecture)
+
+[The spelled-out intro to language modeling: building makemore](https://www.youtube.com/watch?v=PaCmpygFfXo)
+
+[Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
+
+[Attention is All You Need](https://arxiv.org/abs/1706.03762)

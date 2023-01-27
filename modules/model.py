@@ -28,7 +28,12 @@ class DataLoader:
         Parameters
         ----------
         data: str
-            'tiny', 'complete'
+            'tiny', 'complete', default=None
+
+        Example
+        -------
+
+        dataloader.load(data='tiny')
         """
 
         kw = kw.pop('data', None)
@@ -53,7 +58,14 @@ class DataLoader:
         Parameters
         ----------
 
-        f: 
+        f: the self.configs attribute with subscriptable keyword specifying the data set
+
+        Example
+        -------
+
+        self.validate_schema(self.configs[kw], 'text')
+        # self.configs[kw] = the data set schema specified in the configuration file
+        # text = the desired schema for which to validate
         """
         
         if schema == f['schema']:

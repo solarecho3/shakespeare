@@ -1,0 +1,5 @@
+tiny:
+  path: '../data/tinyshakespeare.txt'
+
+complete:
+  path: '../data/complete_works.txt'

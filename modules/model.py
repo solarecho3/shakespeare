@@ -7,7 +7,7 @@ class DataLoader:
 
     def __init__(self, datapath: str | os.PathLike="../data/"):
         """
-        A class to load data.
+        A class to load data. References a configuration file, ../data/datasets.yml, to lookup data set paths.
 
         Parameters
         ----------
@@ -17,38 +17,55 @@ class DataLoader:
         
         self.configpath = os.path.abspath('../config/')
         
-        with open(
-            f'{self.configpath}/datasets.yml',
-            'r',
-            encoding='utf-8') as f:
+        with open(f'{self.configpath}/datasets.yml', 'r', encoding='utf-8') as f:
 
             self.configs = yaml.load(f, Loader=yaml.Loader)
 
-    def tiny(self):
+    def load(self, **kw):
         """
-        Load the tiny shakespeare data set.
+        Load a data set.
+
+        Parameters
+        ----------
+        data: str
+            'tiny', 'complete'
+        """
+
+        kw = kw.pop('data', None)
+
+        if kw is None:
+
+            print('Specify a data set.')
+
+        elif kw is not None:
+
+            with open(self.configs[kw]['path'], 'r', encoding='utf-8') as f:
+
+                self.validate_schema(self.configs[kw], 'text')
+                
+                self.data = f.read()
+
+
+    def validate_schema(self, f, schema):
+        """
+        Validate a data set schema.
+
+        Parameters
+        ----------
+
+        f: 
         """
         
-        with open(
-            self.configs['tiny']['path'],
-            'r',
-            encoding='utf-8') as f:
+        if schema == f['schema']:
 
-            text = f.read()
-        
-        self.data = text
+            # validate the schema here
+            
+            print('Text schema validated.')
 
-    def complete(self):
-        """
-        Load The Complete Works of William Shakespeare by Gutenberg data set.
-        """
-        with open(
-            self.configs['complete']['path'],
-            'r',
-            encoding='utf-8') as f:
+        elif schema != f['schema']:
 
-            text = f.read()
+            print('Schema mismatch. Check arguments or configuration.')
 
-        self.data = text
+        else:
 
-    
+            print('Invalid schema.')

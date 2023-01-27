@@ -1,5 +1,7 @@
 tiny:
   path: '../data/tinyshakespeare.txt'
+  schema: 'text'
 
 complete:
   path: '../data/complete_works.txt'
+  schema: 'text'

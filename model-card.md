@@ -33,7 +33,7 @@ The model is initialized from a [NanoGPT](https://github.com/karpathy/nanoGPT/bl
 
 Each model will be tested for comparison against the other two. The benchmark will be answer coherence and truthfulness. An arbitrary number of labeling events will be chosen to train each model. Labelers will demonstrate desired model behavior by selecting a score per response, on an ordinal scale. The model will provide responses with an attached confidence, designed to be retrofitted to existing interval scales of confidence. The training data will be:
 
-    1. Tiny Shakespeare
+    1. Tiny Shakespeare **or|and**
     2. The Complete Works of William Shakespeare, by the Gutenberg Project.
     3. Critical essays on the works of Shakespeare.
 

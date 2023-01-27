@@ -30,6 +30,10 @@ why did we use them together?
 - [ ] Let's code - NanoGPT (Andrej Karpathy)
 - [ ] Select Reinforcement Learning algorithm [OpenAi baselines](https://github.com/openai/baselines), used to optimize the policy
 - [ ] Write the paper
+- [ ] Tokenization: begin with tiktoken BPE for sub-word encoding, test against sentence token encoding
+- [ ] Select and test varying tokenized tensor block sizes for transformer context [explore memory limits][average the sentence length across a corpus]
+- [ ] Identify specifications on our hardware (GPU parallel processing cores), and fine tune block and batch size
+- [ ] Select optimizer (Karpathy recommends AdamW), tune learning rate
 
 ## lexical definitions
 

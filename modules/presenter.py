@@ -1,0 +1,1 @@
+"""Requests data from the model, notifies the view of available data, and performs data logic."""

@@ -96,7 +96,7 @@ class DataLoader:
 
         elif kw is not None:
 
-            with open(self.configs[kw]['path'], 'r', encoding='utf-8') as f:
+            with open(self.configs[kw]['path'], 'r', encoding='utf-8-sig') as f:
 
                 self.validate_schema(self.configs[kw], 'text')
                 

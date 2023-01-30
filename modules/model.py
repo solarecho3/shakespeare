@@ -8,9 +8,9 @@ create new models for presentation.
 Each atomic data process will be performed by a different
 class:
 
-| Load       | Train       | Configure     | Parse     | Provide      | Logging    |
-|------------|-------------|---------------|-----------|--------------|------------|
-| DataLoader | DataTrainer | DataConfigure | DataParse | DataProvider | DataLogger |
+| Load       | Parse      | Train       | Configure      | Provide      | Log and Time |
+|------------|------------|-------------|----------------|--------------|--------------|
+| DataLoader | DataParser | DataTrainer | DataConfigurer | DataProvider | DataLogger   |
 
 The model only retrieves data and performs actions upon it.
 To provide data to a presenter, the presenter must request
@@ -21,12 +21,39 @@ a standardized data-interchange format such as JSON, XML, etc...
 
 # Docstring format
 This package follows the  numpy/scipy docstring format.
+
+# Concurrence
+
+The model module is built to concurrently and asynchronously handle
+data. To do so, the model adds desired method calls to a priority queue,
+intended to prevent race conditions. The priority queue processes data
+tasks concurrently; GPU multi-processing for training and CPU
+multi-processing and threading for all other tasks.
+TODO Review this for exactness
 '''
 
 import os
 import logging
 import yaml
 from typing import Any
+
+logging.basicConfig(level=logging.INFO)
+
+class DataEventQueue:
+    """
+    Multi-threading support for a data event processing queue.
+    
+    time, priority, action, argument, kwargs
+    """
+
+    def __init__(self):
+        self.queue = []
+
+    def append_event(self, event):
+        """Add an event to the queue."""
+    
+    def pop_event(self, queue):
+        """Pop from left."""
 
 class DataLoader:
     """
@@ -65,7 +92,7 @@ class DataLoader:
 
         if kw is None:
 
-            print('Specify a data set.')
+            print(f'Specify a data set. Refer to {self.configpath}/datasets.yml...')
 
         elif kw is not None:
 
@@ -106,3 +133,44 @@ class DataLoader:
         else:
 
             print('Invalid schema.')
+
+class DataParser:
+    """
+    A class to parse loaded data.
+    """
+
+    def __init__(self, vocab, data: DataLoader):
+        """
+        Parse the data from a DataLoader object.
+        """
+
+        self.vocabs = ["char", "subword", "word"]
+        
+        if vocab == "char":
+            self.vocabulary = self.create_character_vocab(data)
+        elif vocab == "subword":
+            ...
+        elif vocab == "word":
+            self.vocabulary = self.create_word_vocab(data)
+        else:
+            print("Provide a vocabulary type: ", self.vocabs)
+
+    def create_character_vocab(self, data):
+        """
+        Parse and tokenize a character-based vocabulary
+        from a DataLoader object.
+        """
+
+        chars = sorted(list(set(data.data)))
+
+        return chars
+
+    def create_word_vocab(self, data):
+        """
+        Parse and tokenize a word-based vocabulary
+        from a DataLoader object.
+        """
+
+        words = sorted(list(set(data.data.split(maxsplit=-1))))
+
+        return words

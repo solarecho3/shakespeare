@@ -139,38 +139,94 @@ class DataParser:
     A class to parse loaded data.
     """
 
-    def __init__(self, vocab, data: DataLoader):
+    def __init__(self, vocab, data: DataLoader, **kw):
         """
         Parse the data from a DataLoader object.
+
+        Must be bound to the DataLoader class
+        in order to inherit the dataset.
+
+        Parameters
+        ----------
+        vocab: str - The type of tokenization.
+            "char" | "subword" | "word"
+
+        data: DataLoader - The instantiated DataLoader class, with loaded data.
+            
+        **kw: kwargs - Pass kwargs to the tokenizer.
+            strip=False - Strips special characters from word tokens.
         """
 
-        self.vocabs = ["char", "subword", "word"]
-        
         if vocab == "char":
             self.vocabulary = self.create_character_vocab(data)
         elif vocab == "subword":
             ...
         elif vocab == "word":
-            self.vocabulary = self.create_word_vocab(data)
+            self.vocabulary = self.create_word_vocab(data, **kw)
         else:
-            print("Provide a vocabulary type: ", self.vocabs)
+            print("Provide a vocabulary type: ", ["char", "subword", "word"])
 
     def create_character_vocab(self, data):
         """
         Parse and tokenize a character-based vocabulary
         from a DataLoader object.
+
+        This 
         """
 
         chars = sorted(list(set(data.data)))
+        self.vocab_type = "chars"
 
         return chars
 
-    def create_word_vocab(self, data):
+    def create_word_vocab(self, data, **kw):
         """
         Parse and tokenize a word-based vocabulary
-        from a DataLoader object.
+        from a DataLoader object. Strips special characters
+        if the model.DataParser() constructor contains
+        a 'strip=True' argument.
         """
 
+        if kw.get("strip", False):
+
+            if kw["strip"]:
+
+                for c in ["?", "!", ".", ",", "'s", "-", "_", "[", "]", "(", ")"]:
+                    data.data = data.data.replace(c, "")
+
         words = sorted(list(set(data.data.split(maxsplit=-1))))
+        self.vocab_type = "words"
 
         return words
+
+    def encode_vocabulary(self, text):
+        """
+        Encode a vocabulary with simple enumeration.
+        """
+
+        stoi = {ch:i for i,ch in enumerate(self.vocabulary)}
+        
+        if self.vocab_type == "words":
+            encode = lambda s: [stoi[c] for c in s.split(maxsplit=-1)]
+        elif self.vocab_type == "chars":
+            encode = lambda s: [stoi[c] for c in s]
+
+        return encode(text)
+
+    def decode_vocabulary(self, text, spaces=False):
+        """
+        Decode a vocabulary with simple enumeration.
+
+        Parameters
+        ----------
+        spaces: bool - Whether or not to insert whitespace between words.
+        """
+
+        itos = {i:ch for i,ch in enumerate(self.vocabulary)}
+        
+        if spaces:
+            decode = lambda l: " ".join([itos[i] for i in l])
+        else:
+            decode = lambda l: "".join([itos[i] for i in l])
+
+        return decode(text)

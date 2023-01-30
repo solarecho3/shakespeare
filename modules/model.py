@@ -1,20 +1,45 @@
+'''
+# Shakespeare GPT model
+This is the model. It is designed to run asynchronously
+from the presenter, in order to continually update or
+create new models for presentation.
+
+# MV* format
+Each atomic data process will be performed by a different
+class:
+
+| Load       | Train       | Configure     | Parse     | Provide      | Logging    |
+|------------|-------------|---------------|-----------|--------------|------------|
+| DataLoader | DataTrainer | DataConfigure | DataParse | DataProvider | DataLogger |
+
+The model only retrieves data and performs actions upon it.
+To provide data to a presenter, the presenter must request
+the data from the model using the DataProvider class.
+
+The data will be sent by the provider to the requestor in
+a standardized data-interchange format such as JSON, XML, etc...
+
+# Docstring format
+This package follows the  numpy/scipy docstring format.
+'''
+
 import os
 import logging
 import yaml
 from typing import Any
 
 class DataLoader:
+    """
+    A class to load data. References a configuration file, ../data/datasets.yml, to lookup data set paths.
+
+    Parameters
+    ----------
+
+    path: str | os.PathLike - Relative path to the data folder. Default = ../data/
+    """
 
     def __init__(self, datapath: str | os.PathLike="../data/"):
-        """
-        A class to load data. References a configuration file, ../data/datasets.yml, to lookup data set paths.
 
-        Parameters
-        ----------
-
-        path: str | os.PathLike - Relative path to the data folder. Default = ../data/
-        """
-        
         self.configpath = os.path.abspath('../config/')
         
         with open(f'{self.configpath}/datasets.yml', 'r', encoding='utf-8') as f:

@@ -75,7 +75,7 @@ class DataLoader:
 
     def load(self, **kw):
         """
-        Load a data set.
+        Load a data set. Pass data=<dataset key> from the datasets.yml configuration file.
 
         Parameters
         ----------
@@ -96,6 +96,9 @@ class DataLoader:
 
         elif kw is not None:
 
+            # the datasets config file is YAML
+            # each data set is specified with:
+            # <data set name>: { path: '', schema: '' } format
             with open(self.configs[kw]['path'], 'r', encoding='utf-8-sig') as f:
 
                 self.validate_schema(self.configs[kw], 'text')

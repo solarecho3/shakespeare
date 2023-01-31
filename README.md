@@ -34,7 +34,7 @@ why did we use them together?
 - [ ] Select and test varying tokenized tensor block sizes for transformer context [explore memory limits][average the sentence length across a corpus]
 - [ ] Identify specifications on our hardware (GPU parallel processing cores), and fine tune block and batch size
 - [ ] Select optimizer (Karpathy recommends AdamW), tune learning rate
-- [ ] Define our hyperparameters for compute-optimal training [DeepMind](https://arxiv.org/pdf/2203.15556.pdf)
+- [ ] Define our hyperparameters for compute-optimal training [DeepMind](https://arxiv.org/pdf/2203.15556.pdf)[Scaling Laws](https://github.com/karpathy/nanoGPT/blob/master/scaling_laws.ipynb)
 
 ## lexical definitions
 

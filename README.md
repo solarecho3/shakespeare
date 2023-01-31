@@ -21,7 +21,7 @@ describe quantitative methods
 why did we use them together?
 
 ## roadmap
-- [ ] Select a GPT for our use case - [InstructGPT](https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
+- [x] Select a GPT for our use case - [InstructGPT](https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
 - [ ] Research Reinforcement Learning from Human Feedback (RLHF)
 - [ ] Theorize a practical application of the RLHF method for our use case
 - [ ] Theorize python implementation of RLHF and practical use case
@@ -34,6 +34,7 @@ why did we use them together?
 - [ ] Select and test varying tokenized tensor block sizes for transformer context [explore memory limits][average the sentence length across a corpus]
 - [ ] Identify specifications on our hardware (GPU parallel processing cores), and fine tune block and batch size
 - [ ] Select optimizer (Karpathy recommends AdamW), tune learning rate
+- [ ] Define our hyperparameters for compute-optimal training [DeepMind](https://arxiv.org/pdf/2203.15556.pdf)
 
 ## lexical definitions
 
@@ -107,6 +108,8 @@ Will the tool be concerned with timeliness?
 [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
 
 [Attention is All You Need](https://arxiv.org/abs/1706.03762)
+
+[Training Compute_Optimal Large Language Models](https://arxiv.org/pdf/2203.15556.pdf)
 
 ## development notes
 - 25 Jan 23. adam. initializing the repository, architecural design, white paper framing.

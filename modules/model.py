@@ -250,6 +250,7 @@ class DataTrainer:
 
     def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int):
         self.data_tensor = torch.tensor(vocab.encode_vocabulary(data.data))
+        self.training_set_percentage = training_set_percentage
         self.training_validation_pivot_point = int(training_set_percentage*len(self.data_tensor))
         
         self.training_data = self.data_tensor[:self.training_validation_pivot_point]

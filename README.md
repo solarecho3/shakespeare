@@ -87,6 +87,11 @@ Will the tool be concerned with timeliness?
 
 ## implementation notes
 
+### Tokenized vocab lengths (complete works data set)
+char tokenization = 107
+tiktoken BPE = 50257
+word tokenization = 76175
+
 ### On RLHF and human preference
 
 > "Of two acts $f$ and $g$, it is possible that the person **prefers $f$ to $g$**. Loosely speaking, this means that, if he were required to decide between $f$ and $g$, no other acts being available, he would decide on $f$. This procedure for testing preference is not entirely adequate, if only because it fails to take account of, or even define, the possibility that the person may not really have a preference between $f$ and $g$, regarding them as equivalent; in which case his choice of $f$ should not be regarded as significant." - Savage, The Foundations of Statistics, p.17

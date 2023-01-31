@@ -267,12 +267,21 @@ class DataTrainer:
     block_size: int - Size of each training block.
     """
 
-    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int):
-        self.data_tensor = torch.tensor(vocab.encode_vocabulary(data.data))
-        self.training_set_percentage = training_set_percentage
-        self.training_validation_pivot_point = int(training_set_percentage*len(self.data_tensor))
+    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=4):
         
-        self.training_data = self.data_tensor[:self.training_validation_pivot_point]
-        self.validation_data = self.data_tensor[self.training_validation_pivot_point:]
+        # encode the data
+        self.encoded_data = torch.tensor(vocab.encode_vocabulary(data.data), dtype=torch.long)
+        
+        self.training_set_percentage = training_set_percentage
+        self.training_validation_pivot_point = int(training_set_percentage*len(self.encoded_data))
+        
+        self.training_data = self.encoded_data[:self.training_validation_pivot_point]
+        self.validation_data = self.encoded_data[self.training_validation_pivot_point:]
 
+        # the context length
         self.block_size = block_size
+
+        # number of parallel processes
+        self.batch_size = batch_size
+        
+        self.manual_seed = torch.manual_seed(7561)

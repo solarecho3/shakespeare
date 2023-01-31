@@ -37,6 +37,7 @@ import logging
 import yaml
 from typing import Any
 import torch
+import tiktoken
 
 logging.basicConfig(level=logging.INFO)
 
@@ -165,24 +166,33 @@ class DataParser:
         if vocab == "char":
             self.vocabulary = self.create_character_vocab(data)
         elif vocab == "subword":
-            ...
+            self.vocabulary = self.create_subword_vocab(data)
         elif vocab == "word":
             self.vocabulary = self.create_word_vocab(data, **kw)
         else:
             print("Provide a vocabulary type: ", ["char", "subword", "word"])
 
+    def create_subword_vocab(self, data):
+        """
+        Parse and tokenize a subword-based vocabulary using Tiktoken BPE.
+
+        EST (complete works) = 50527
+        """
+        subword = tiktoken.get_encoding("gpt2")
+        self.vocab_type = "subword"
+
+        return subword
+
     def create_character_vocab(self, data):
         """
         Parse and tokenize a character-based vocabulary
         from a DataLoader object.
-
-        This 
         """
 
-        chars = sorted(list(set(data.data)))
-        self.vocab_type = "chars"
+        char = sorted(list(set(data.data)))
+        self.vocab_type = "char"
 
-        return chars
+        return char
 
     def create_word_vocab(self, data, **kw):
         """
@@ -199,22 +209,27 @@ class DataParser:
                 for c in ["?", "!", ".", ",", "'s", "-", "_", "[", "]", "(", ")"]:
                     data.data = data.data.replace(c, "")
 
-        words = sorted(list(set(data.data.split(maxsplit=-1))))
-        self.vocab_type = "words"
+        word = sorted(list(set(data.data.split(maxsplit=-1))))
+        self.vocab_type = "word"
 
-        return words
+        return word
 
     def encode_vocabulary(self, text):
         """
         Encode a vocabulary with simple enumeration.
         """
 
+        if self.vocab_type == "subword":
+            encode = tiktoken.get_encoding("gpt2").encode(text)
+            return encode
+
         stoi = {ch:i for i,ch in enumerate(self.vocabulary)}
         
-        if self.vocab_type == "words":
+        if self.vocab_type == "word":
             encode = lambda s: [stoi[c] for c in s.split(maxsplit=-1)]
-        elif self.vocab_type == "chars":
+        elif self.vocab_type == "char":
             encode = lambda s: [stoi[c] for c in s]
+        
 
         return encode(text)
 
@@ -226,6 +241,10 @@ class DataParser:
         ----------
         spaces: bool - Whether or not to insert whitespace between words.
         """
+
+        if self.vocab_type == "subword":
+            decode = tiktoken.get_encoding("gpt2").decode(text)
+            return decode
 
         itos = {i:ch for i,ch in enumerate(self.vocabulary)}
         

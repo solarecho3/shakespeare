@@ -36,6 +36,7 @@ import os
 import logging
 import yaml
 from typing import Any
+import torch
 
 logging.basicConfig(level=logging.INFO)
 
@@ -138,6 +139,7 @@ class DataLoader:
             print('Invalid schema.')
 
 class DataParser:
+    
     """
     A class to parse loaded data.
     """
@@ -233,3 +235,24 @@ class DataParser:
             decode = lambda l: "".join([itos[i] for i in l])
 
         return decode(text)
+
+class DataTrainer:
+    """
+    Prepare and executing training.
+
+    Parameters
+    ----------
+    vocab: DataParser - the DataParser object with vocabulary created.
+    data: DataLoader - the DataLoader object with data loaded.
+    training_set_percentage: float - Percentage to dedicate to training, in decimal[float] form.
+    block_size: int - Size of each training block.
+    """
+
+    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int):
+        self.data_tensor = torch.tensor(vocab.encode_vocabulary(data.data))
+        self.training_validation_pivot_point = int(training_set_percentage*len(self.data_tensor))
+        
+        self.training_data = self.data_tensor[:self.training_validation_pivot_point]
+        self.validation_data = self.data_tensor[self.training_validation_pivot_point:]
+
+        self.block_size = block_size

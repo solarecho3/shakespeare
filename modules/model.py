@@ -60,6 +60,9 @@ def logger(func):
         return func(*args, **kw)
     return wrapper
 
+class HyperParams:
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 class DataEventQueue:
     """
     Multi-threading support for a data event processing queue.
@@ -340,6 +343,9 @@ class DataTrainer:
 
         # setup the targets y for inputs x
         y = torch.stack([data[i+1:i+self.block_size+1] for i in ix])
+
+        # send x,y to cuda device
+        x, y = x.to(HyperParams.device), y.to(HyperParams.device)
         return x, y
 
     @logger
@@ -376,8 +382,12 @@ class DataTrainer:
                 target = yb[b,t]
                 logging.info(f'Input: {context.tolist()}\nTarget: {target}\n')
 
+        # create language model
         # TODO replace this with a decoupled option for multiple language models
-        m = BigramLanguageModel(self.vocab_size)
+        _model = BigramLanguageModel(self.vocab_size)
+        # send model to 'cuda' device
+        m = _model.to(HyperParams.device)
+
         logits, loss = m(xb, yb)
         logging.info(f'Idealized loss: {numpy.log(self.vocab_size)}')
         logging.info(f'Loss: {loss}')
@@ -405,7 +415,9 @@ class DataTrainer:
         
         print(loss.item())
 
-        print(self.decode(m.generate(idx= torch.zeros((1,1), dtype=torch.long), max_new_tokens=250)[0].tolist()))
+        context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
+
+        print(self.decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 
 
 class BigramLanguageModel(torch.nn.Module):

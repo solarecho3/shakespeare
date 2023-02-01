@@ -30,6 +30,7 @@ intended to prevent race conditions. The priority queue processes data
 tasks concurrently; GPU multi-processing for training and CPU
 multi-processing and threading for all other tasks.
 TODO Review this for exactness
+TODO Improve the logger
 '''
 
 import os
@@ -38,8 +39,24 @@ import yaml
 from typing import Any
 import torch
 import tiktoken
+import functools
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    filename='../logs/model.log',
+    encoding='utf-8',
+    format='%(asctime)s - %(message)s',
+    datefmt='%d-%b-%y %H:%M:%S',
+    level=logging.DEBUG
+    )
+logging.info(f"======= {__name__} START =======")
+
+def logger(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
+        logging.info('\n')
+        return func(*args, **kw)
+    return wrapper
 
 class DataEventQueue:
     """
@@ -48,14 +65,19 @@ class DataEventQueue:
     time, priority, action, argument, kwargs
     """
 
+    @logger
     def __init__(self):
         self.queue = []
 
+    @logger
     def append_event(self, event):
         """Add an event to the queue."""
+        pass
     
+    @logger
     def pop_event(self, queue):
         """Pop from left."""
+        pass
 
 class DataLoader:
     """
@@ -67,6 +89,7 @@ class DataLoader:
     path: str | os.PathLike - Relative path to the data folder. Default = ../data/
     """
 
+    @logger
     def __init__(self, datapath: str | os.PathLike="../data/"):
 
         self.configpath = os.path.abspath('../config/')
@@ -75,6 +98,7 @@ class DataLoader:
 
             self.configs = yaml.load(f, Loader=yaml.Loader)
 
+    @logger
     def load(self, **kw):
         """
         Load a data set. Pass data=<dataset key> from the datasets.yml configuration file.
@@ -107,7 +131,7 @@ class DataLoader:
                 
                 self.data = f.read()
 
-
+    @logger
     def validate_schema(self, f, schema):
         """
         Validate a data set schema.
@@ -144,7 +168,8 @@ class DataParser:
     """
     A class to parse loaded data.
     """
-
+    
+    @logger
     def __init__(self, vocab, data: DataLoader, **kw):
         """
         Parse the data from a DataLoader object.
@@ -172,6 +197,7 @@ class DataParser:
         else:
             print("Provide a vocabulary type: ", ["char", "subword", "word"])
 
+    @logger
     def create_subword_vocab(self, data):
         """
         Parse and tokenize a subword-based vocabulary using Tiktoken BPE.
@@ -183,6 +209,7 @@ class DataParser:
 
         return subword
 
+    @logger
     def create_character_vocab(self, data):
         """
         Parse and tokenize a character-based vocabulary
@@ -194,6 +221,7 @@ class DataParser:
 
         return char
 
+    @logger
     def create_word_vocab(self, data, **kw):
         """
         Parse and tokenize a word-based vocabulary
@@ -214,6 +242,7 @@ class DataParser:
 
         return word
 
+    @logger
     def encode_vocabulary(self, text):
         """
         Encode a vocabulary with simple enumeration.
@@ -229,10 +258,10 @@ class DataParser:
             encode = lambda s: [stoi[c] for c in s.split(maxsplit=-1)]
         elif self.vocab_type == "char":
             encode = lambda s: [stoi[c] for c in s]
-        
 
         return encode(text)
 
+    @logger
     def decode_vocabulary(self, text, spaces=False):
         """
         Decode a vocabulary with simple enumeration.
@@ -267,6 +296,7 @@ class DataTrainer:
     block_size: int - Size of each training block.
     """
 
+    @logger
     def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=4):
         
         # encode the data
@@ -285,3 +315,54 @@ class DataTrainer:
         self.batch_size = batch_size
         
         self.manual_seed = torch.manual_seed(7561)
+        logging.info(f'torch.manual_seed({self.manual_seed.seed})')
+
+    @logger
+    def get_batch(self, train=True):
+
+        data = self.training_data if train == True else self.validation_data
+
+        # generate random int for start points in data
+        ix = torch.randint(len(data) - self.block_size, (self.batch_size,))
+        
+        # setup the time dimension, x-axis, for inputs
+        x = torch.stack([data[i:i+self.block_size] for i in ix])
+
+        # setup the targets y for inputs x
+        y = torch.stack([data[i+1:i+self.block_size+1] for i in ix])
+        return x, y
+
+    @logger
+    def train(self):
+        """
+        "Time dimension", as in, input of length n or O(n)
+        
+        Chunk a block of 9 characters,
+        x: inputs
+        y: targets
+
+        context: x to and including tth char
+        target: y at the tth char
+        """
+
+        x = self.training_data[:self.block_size]
+        y = self.training_data[1:self.block_size+1]
+        
+        for t in range(self.block_size):
+            context = x[:t+1]
+            target = y[t]
+            print(f'when input is {context} the target is: {target}')
+
+        xb, yb = self.get_batch()
+        logging.info(f'inputs:')
+        logging.info(xb.shape)
+        logging.info(xb)
+        logging.info(f'targets:')
+        logging.info(yb.shape)
+        logging.info(yb)
+
+        for b in range(self.batch_size): # batch or y-dimension
+            for t in range(self.block_size): # time or x-dimension
+                context = xb[b, :t+1]
+                target = yb[b,t]
+                logging.info(f'Input: {context.tolist()}\nTarget: {target}')

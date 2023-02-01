@@ -53,6 +53,7 @@ logging.info(f"======= {__name__} START =======")
 def logger(func):
     @functools.wraps(func)
     def wrapper(*args, **kw):
+        # prevent entire dataset from being printed to logs by slicing str(args)
         logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
         logging.info('\n')
         return func(*args, **kw)
@@ -366,3 +367,19 @@ class DataTrainer:
                 context = xb[b, :t+1]
                 target = yb[b,t]
                 logging.info(f'Input: {context.tolist()}\nTarget: {target}')
+
+class BigramLanguageModel(torch.nn.Module):
+
+    @logger
+    def __init__(self, vocab_size):
+
+        super().__init__()
+
+        self.token_embedding_table = torch.nn.Embedding(vocab_size, vocab_size)
+
+    @logger
+    def forward(self, idx, targets):
+
+        logits = self.token_embedding_table(idx)
+
+        return logits

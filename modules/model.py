@@ -32,15 +32,18 @@ multi-processing and threading for all other tasks.
 TODO Review this for exactness
 TODO Improve the logger
 '''
+from __future__ import annotations
 
 import os
 import logging
 import yaml
-from typing import Any
 import torch
 import tiktoken
 import functools
 import numpy
+
+from dataclasses import dataclass
+from typing import Any
 
 logging.basicConfig(
     filename='../logs/model.log',
@@ -61,8 +64,33 @@ def logger(func):
 
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    max_iterations = 10_000
-    evaluation_interval = 300
+    max_iterations = 13_000
+    evaluation_interval = 1000
+    block_size = 32
+    batch_size = 8
+    manual_seed = 7561
+    training_set_percentage = .90
+
+@dataclass
+class Data:
+    """
+    All classes hand transmissible objects to this class.
+    This prevents making one thread of all classes the model.
+    """
+
+    data: DataLoader.data
+    vocabulary: DataParser.vocabulary
+    vocabulary_type: DataParser.vocab_type
+    vocabulary_size: DataParser.vocab_size
+    encoder: DataParser.encoder
+    decoder: DataParser.decoder
+    encoded_data: DataTrainer.encoded_data
+    training_validation_pivot_point: DataTrainer.training_validation_pivot_point
+    training_data: DataTrainer.training_data
+    validation_data: DataTrainer.validation_data
+    language_model: DataTrainer.m
+    optimizer: DataTrainer.optimizer
+    generation: DataTrainer.generation
 
 class DataEventQueue:
     """
@@ -96,7 +124,7 @@ class DataLoader:
     """
 
     @logger
-    def __init__(self, datapath: str | os.PathLike="../data/"):
+    def __init__(self, datapath: str | os.PathLike="../data/") -> DataLoader:
 
         self.configpath = os.path.abspath('../config/')
         
@@ -176,7 +204,7 @@ class DataParser:
     """
     
     @logger
-    def __init__(self, vocab, data: DataLoader, **kw):
+    def __init__(self, vocab, data: DataLoader, **kw) -> DataParser:
         """
         Parse the data from a DataLoader object.
 
@@ -306,7 +334,7 @@ class DataTrainer:
     """
 
     @logger
-    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=32):
+    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=32) -> DataTrainer:
         
         # encode the data
         self.encoded_data = torch.tensor(vocab.encode_vocabulary(data.data), dtype=torch.long)
@@ -429,7 +457,9 @@ class DataTrainer:
 
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
-        print(self.decode(self.m.generate(context, max_new_tokens=500)[0].tolist()))
+        # DataTrainer.generation
+        self.generation = self.decode(self.m.generate(context, max_new_tokens=500)[0].tolist())
+        print(self.generation)
 
 
 class BigramLanguageModel(torch.nn.Module):

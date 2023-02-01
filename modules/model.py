@@ -40,6 +40,7 @@ from typing import Any
 import torch
 import tiktoken
 import functools
+import numpy
 
 logging.basicConfig(
     filename='../logs/model.log',
@@ -207,6 +208,7 @@ class DataParser:
         """
         subword = tiktoken.get_encoding("gpt2")
         self.vocab_type = "subword"
+        self.vocab_size = subword.n_vocab
 
         return subword
 
@@ -219,6 +221,7 @@ class DataParser:
 
         char = sorted(list(set(data.data)))
         self.vocab_type = "char"
+        self.vocab_size = len(char)
 
         return char
 
@@ -240,6 +243,7 @@ class DataParser:
 
         word = sorted(list(set(data.data.split(maxsplit=-1))))
         self.vocab_type = "word"
+        self.vocab_size = len(word)
 
         return word
 
@@ -314,6 +318,8 @@ class DataTrainer:
 
         # number of parallel processes
         self.batch_size = batch_size
+
+        self.vocab_size = vocab.vocab_size
         
         self.manual_seed = torch.manual_seed(7561)
         logging.info(f'torch.manual_seed({self.manual_seed.seed})')
@@ -355,10 +361,10 @@ class DataTrainer:
             print(f'when input is {context} the target is: {target}')
 
         xb, yb = self.get_batch()
-        logging.info(f'inputs:')
+        logging.info(f'\ninputs:')
         logging.info(xb.shape)
         logging.info(xb)
-        logging.info(f'targets:')
+        logging.info(f'\ntargets:')
         logging.info(yb.shape)
         logging.info(yb)
 
@@ -366,20 +372,67 @@ class DataTrainer:
             for t in range(self.block_size): # time or x-dimension
                 context = xb[b, :t+1]
                 target = yb[b,t]
-                logging.info(f'Input: {context.tolist()}\nTarget: {target}')
+                logging.info(f'Input: {context.tolist()}\nTarget: {target}\n')
+
+        # TODO replace this with a decoupled option for multiple language models
+        m = BigramLanguageModel(self.vocab_size)
+        logits, loss = m(xb, yb)
+        logging.info(f'Idealized loss: {numpy.log(self.vocab_size)}')
+        logging.info(f'Loss: {loss}')
 
 class BigramLanguageModel(torch.nn.Module):
-
-    @logger
+    # @logger
     def __init__(self, vocab_size):
 
+        logging.info('Initializing BigramLanguageModel...\n')
         super().__init__()
 
+        # creates tensor of shape vocab_size x vocab_size
         self.token_embedding_table = torch.nn.Embedding(vocab_size, vocab_size)
+        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}\n')
 
-    @logger
+    # @logger
     def forward(self, idx, targets):
-
+        '''
+        Logits provide the context by allowing each token
+        to predict the next likely token, wrapping the results
+        in a tensor of (B,T,C) shape
+        '''
+        # idx and targets are both (B,T) tensor of integer
+        # B = Batch or y-dimension, T = Time or x-dimension
         logits = self.token_embedding_table(idx)
+        logging.info(f'Logits created: {logits}') # adds the Channel, to (B,T,C) tensor
 
-        return logits
+        # reshape the logits for torch cross_entropy functional
+        logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
+        B,T,C = logits.shape
+        logits = logits.view(B*T, C) # 2D tensor, with B*T in 1D, C in 1D
+        targets = targets.view(B*T) # 1D tensor, with B*T
+        logging.info(f'Logits shape: {logits.shape}')
+        logging.info(f'Targets shape: {targets.shape}\n')
+
+        # interpret the distance from the target for the logit
+        loss = torch.nn.functional.cross_entropy(logits, targets)
+
+        return logits, loss
+
+    def generate(self, idx, max_new_tokens):
+        
+        # idx is (B, T) array of indices in the current context
+        for _ in range(max_new_tokens):
+
+            # get predictions
+            logits, loss = self(idx)
+
+            # focus only on the last time step
+            logits = logits[:, -1, :] # becomes (B, C)
+
+            # apply softmax to get probabilities
+            probs = torch.nn.functional.softmax(logits, dim=-1) # (B, C)
+
+            # sample from the distribution
+            idx_next = torch.multinomial(probs, num_samples=1) # (B, 1)
+
+            # append sampled index to the running sequence
+            idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
+        return idx

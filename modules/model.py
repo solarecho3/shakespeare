@@ -302,7 +302,7 @@ class DataTrainer:
     """
 
     @logger
-    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=4):
+    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=32):
         
         # encode the data
         self.encoded_data = torch.tensor(vocab.encode_vocabulary(data.data), dtype=torch.long)
@@ -320,6 +320,9 @@ class DataTrainer:
         self.batch_size = batch_size
 
         self.vocab_size = vocab.vocab_size
+
+        # TODO address this coupling later
+        self.decode = vocab.decode_vocabulary
         
         self.manual_seed = torch.manual_seed(7561)
         logging.info(f'torch.manual_seed({self.manual_seed.seed})')
@@ -358,15 +361,14 @@ class DataTrainer:
         for t in range(self.block_size):
             context = x[:t+1]
             target = y[t]
-            print(f'when input is {context} the target is: {target}')
 
         xb, yb = self.get_batch()
         logging.info(f'\ninputs:')
         logging.info(xb.shape)
-        logging.info(xb)
+        # logging.info(xb)
         logging.info(f'\ntargets:')
         logging.info(yb.shape)
-        logging.info(yb)
+        # logging.info(yb)
 
         for b in range(self.batch_size): # batch or y-dimension
             for t in range(self.block_size): # time or x-dimension
@@ -380,8 +382,34 @@ class DataTrainer:
         logging.info(f'Idealized loss: {numpy.log(self.vocab_size)}')
         logging.info(f'Loss: {loss}')
 
+        # start optimization
+        # TODO decouple this, move to function or module
+        optimizer = torch.optim.AdamW(m.parameters(), lr=1e-3)
+
+        for steps in range(20_000):
+
+            # sample a batch of data
+            xb, yb = self.get_batch(train=True)
+            
+            # evaluate the loss
+            logits, loss = m(xb, yb)
+
+            # zero the gradients
+            optimizer.zero_grad(set_to_none=True)
+            
+            # get gradients of all parameters
+            loss.backward()
+
+            # use gradients to update new parameters
+            optimizer.step()
+        
+        print(loss.item())
+
+        print(self.decode(m.generate(idx= torch.zeros((1,1), dtype=torch.long), max_new_tokens=250)[0].tolist()))
+
+
 class BigramLanguageModel(torch.nn.Module):
-    # @logger
+    
     def __init__(self, vocab_size):
 
         logging.info('Initializing BigramLanguageModel...\n')
@@ -392,27 +420,34 @@ class BigramLanguageModel(torch.nn.Module):
         logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}\n')
 
     # @logger
-    def forward(self, idx, targets):
+    def forward(self, idx, targets=None):
         '''
         Logits provide the context by allowing each token
         to predict the next likely token, wrapping the results
         in a tensor of (B,T,C) shape
         '''
+
         # idx and targets are both (B,T) tensor of integer
         # B = Batch or y-dimension, T = Time or x-dimension
         logits = self.token_embedding_table(idx)
         logging.info(f'Logits created: {logits}') # adds the Channel, to (B,T,C) tensor
 
-        # reshape the logits for torch cross_entropy functional
-        logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
-        B,T,C = logits.shape
-        logits = logits.view(B*T, C) # 2D tensor, with B*T in 1D, C in 1D
-        targets = targets.view(B*T) # 1D tensor, with B*T
-        logging.info(f'Logits shape: {logits.shape}')
-        logging.info(f'Targets shape: {targets.shape}\n')
+        if targets is None:
+            logging.warning('Targets is none, setting loss to none.')
+            loss = None
 
-        # interpret the distance from the target for the logit
-        loss = torch.nn.functional.cross_entropy(logits, targets)
+        else:
+            # reshape the logits for torch cross_entropy functional
+            logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
+            
+            B,T,C = logits.shape
+            logits = logits.view(B*T, C) # 2D tensor, with B*T in 1D, C in 1D
+            targets = targets.view(B*T) # 1D tensor, with B*T
+            logging.info(f'Logits shape: {logits.shape}')
+            logging.info(f'Targets shape: {targets.shape}\n')
+            
+            # interpret the distance from the target for the logit
+            loss = torch.nn.functional.cross_entropy(logits, targets)
 
         return logits, loss
 
@@ -435,4 +470,5 @@ class BigramLanguageModel(torch.nn.Module):
 
             # append sampled index to the running sequence
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
+
         return idx

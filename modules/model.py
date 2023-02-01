@@ -330,7 +330,7 @@ class DataTrainer:
         self.manual_seed = torch.manual_seed(7561)
         logging.info(f'torch.manual_seed({self.manual_seed.seed})')
 
-    @logger
+    # @logger
     def get_batch(self, train=True):
 
         data = self.training_data if train == True else self.validation_data
@@ -380,7 +380,7 @@ class DataTrainer:
             for t in range(self.block_size): # time or x-dimension
                 context = xb[b, :t+1]
                 target = yb[b,t]
-                logging.info(f'Input: {context.tolist()}\nTarget: {target}\n')
+                # logging.info(f'Input: {context.tolist()}\nTarget: {target}\n')
 
         # create language model
         # TODO replace this with a decoupled option for multiple language models
@@ -442,21 +442,21 @@ class BigramLanguageModel(torch.nn.Module):
         # idx and targets are both (B,T) tensor of integer
         # B = Batch or y-dimension, T = Time or x-dimension
         logits = self.token_embedding_table(idx)
-        logging.info(f'Logits created: {logits}') # adds the Channel, to (B,T,C) tensor
+        # logging.info(f'Logits created: {logits.shape}') # adds the Channel, to (B,T,C) tensor
 
         if targets is None:
-            logging.warning('Targets is none, setting loss to none.')
+            # logging.warning('Targets is none, setting loss to none.')
             loss = None
 
         else:
             # reshape the logits for torch cross_entropy functional
-            logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
+            # logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
             
             B,T,C = logits.shape
             logits = logits.view(B*T, C) # 2D tensor, with B*T in 1D, C in 1D
             targets = targets.view(B*T) # 1D tensor, with B*T
-            logging.info(f'Logits shape: {logits.shape}')
-            logging.info(f'Targets shape: {targets.shape}\n')
+            # logging.info(f'Logits shape: {logits.shape}')
+            # logging.info(f'Targets shape: {targets.shape}\n')
             
             # interpret the distance from the target for the logit
             loss = torch.nn.functional.cross_entropy(logits, targets)

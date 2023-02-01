@@ -56,12 +56,13 @@ def logger(func):
     def wrapper(*args, **kw):
         # prevent entire dataset from being printed to logs by slicing str(args)
         logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
-        logging.info('\n')
         return func(*args, **kw)
     return wrapper
 
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    max_iterations = 10_000
+    evaluation_interval = 300
 
 class DataEventQueue:
     """
@@ -348,6 +349,20 @@ class DataTrainer:
         x, y = x.to(HyperParams.device), y.to(HyperParams.device)
         return x, y
 
+    @torch.no_grad()
+    def estimate_loss(self):
+        out = {}
+        self.m.eval()
+        for split in ['train', 'val']:
+            losses = torch.zeros(HyperParams.evaluation_interval)
+            for k in range(HyperParams.evaluation_interval):
+                X, Y = self.get_batch(split)
+                logits, loss = self.m(X, Y)
+                losses[k] = loss.item()
+            out[split] = losses.mean()
+        self.m.train()
+        return out
+
     @logger
     def train(self):
         """
@@ -369,40 +384,37 @@ class DataTrainer:
             target = y[t]
 
         xb, yb = self.get_batch()
-        logging.info(f'\ninputs:')
-        logging.info(xb.shape)
-        # logging.info(xb)
-        logging.info(f'\ntargets:')
-        logging.info(yb.shape)
-        # logging.info(yb)
 
         for b in range(self.batch_size): # batch or y-dimension
             for t in range(self.block_size): # time or x-dimension
                 context = xb[b, :t+1]
                 target = yb[b,t]
-                # logging.info(f'Input: {context.tolist()}\nTarget: {target}\n')
 
         # create language model
         # TODO replace this with a decoupled option for multiple language models
         _model = BigramLanguageModel(self.vocab_size)
         # send model to 'cuda' device
-        m = _model.to(HyperParams.device)
-
-        logits, loss = m(xb, yb)
+        self.m = _model.to(HyperParams.device)
+        
+        logits, loss = self.m(xb, yb)
         logging.info(f'Idealized loss: {numpy.log(self.vocab_size)}')
         logging.info(f'Loss: {loss}')
 
         # start optimization
         # TODO decouple this, move to function or module
-        optimizer = torch.optim.AdamW(m.parameters(), lr=1e-3)
+        optimizer = torch.optim.AdamW(self.m.parameters(), lr=1e-3)
 
-        for steps in range(20_000):
+        for iteration in range(HyperParams.max_iterations):
 
+            if iteration %  HyperParams.evaluation_interval == 0:
+                losses = self.estimate_loss()
+                logging.info(f'Step {iteration}: train loss {losses["train"]:.4f}, val loss {losses["val"]:.4f}')
+            
             # sample a batch of data
             xb, yb = self.get_batch(train=True)
             
             # evaluate the loss
-            logits, loss = m(xb, yb)
+            logits, loss = self.m(xb, yb)
 
             # zero the gradients
             optimizer.zero_grad(set_to_none=True)
@@ -417,19 +429,19 @@ class DataTrainer:
 
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
-        print(self.decode(m.generate(context, max_new_tokens=500)[0].tolist()))
+        print(self.decode(self.m.generate(context, max_new_tokens=500)[0].tolist()))
 
 
 class BigramLanguageModel(torch.nn.Module):
     
     def __init__(self, vocab_size):
 
-        logging.info('Initializing BigramLanguageModel...\n')
+        logging.info('Initializing BigramLanguageModel...')
         super().__init__()
 
         # creates tensor of shape vocab_size x vocab_size
         self.token_embedding_table = torch.nn.Embedding(vocab_size, vocab_size)
-        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}\n')
+        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}')
 
     # @logger
     def forward(self, idx, targets=None):
@@ -442,21 +454,16 @@ class BigramLanguageModel(torch.nn.Module):
         # idx and targets are both (B,T) tensor of integer
         # B = Batch or y-dimension, T = Time or x-dimension
         logits = self.token_embedding_table(idx)
-        # logging.info(f'Logits created: {logits.shape}') # adds the Channel, to (B,T,C) tensor
 
         if targets is None:
-            # logging.warning('Targets is none, setting loss to none.')
             loss = None
 
         else:
             # reshape the logits for torch cross_entropy functional
-            # logging.info(f'\nReshaping logits and targets for cross-entropy loss function.')
             
             B,T,C = logits.shape
             logits = logits.view(B*T, C) # 2D tensor, with B*T in 1D, C in 1D
             targets = targets.view(B*T) # 1D tensor, with B*T
-            # logging.info(f'Logits shape: {logits.shape}')
-            # logging.info(f'Targets shape: {targets.shape}\n')
             
             # interpret the distance from the target for the logit
             loss = torch.nn.functional.cross_entropy(logits, targets)

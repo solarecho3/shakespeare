@@ -34,7 +34,6 @@ def logger(func):
             logging.exception(f'Exception raised in {func.__name__}. Exception: {str(e)}')
     return wrapper
 
-@logger
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     max_iterations = 13_000
@@ -199,6 +198,7 @@ class Trainer:
 
         return x, y
 
+    @logger
     @torch.no_grad()
     def estimate_loss(self):
         out = {}
@@ -213,6 +213,7 @@ class Trainer:
         Data.model.train()
         return out
 
+    @logger
     def train(self):
 
         x = Data.training_data[:HyperParams.block_size]
@@ -231,9 +232,9 @@ class Trainer:
 
         model = BigramLanguageModel()
 
-        Data.model = model.to(HyperParams.device)
+        model = model.to(HyperParams.device)
 
-        logits, loss = Data.model(xb, yb)
+        logits, loss = model(xb, yb)
         logging.info(f'Idealized loss: {numpy.log(Data.vocabulary_size)}')
         logging.info(f'Loss: {loss}')
 
@@ -248,7 +249,7 @@ class Trainer:
             xb, yb = self.get_batch()
 
             # evaluate the loss
-            logits, loss = Data.model(xb, yb)
+            logits, loss = model(xb, yb)
 
             # zero the grads
             Data.optimizer.zero_grad(set_to_none=True)
@@ -263,7 +264,7 @@ class Trainer:
 
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
-        Decoder(Data.model.generate(context, max_new_tokens=500)[0].tolist())
+        Decoder(model.generate(context, max_new_tokens=500)[0].tolist())
         logging.warning(f'Generation: {Data.decoded_data}')
 
 class BigramLanguageModel(torch.nn.Module):
@@ -275,6 +276,7 @@ class BigramLanguageModel(torch.nn.Module):
         Data.token_embedding_table = torch.nn.Embedding(Data.vocabulary_size, Data.vocabulary_size)
         logging.info(f'Embedding table created: {Data.token_embedding_table} with vocabulary size {Data.vocabulary_size}...')
     
+    @logger
     def forward(self, idx, targets=None):
 
         logits = Data.token_embedding_table(idx)
@@ -291,6 +293,7 @@ class BigramLanguageModel(torch.nn.Module):
         
         return logits, loss
     
+    @logger    
     def generate(self, idx, max_new_tokens):
 
         for _ in range(max_new_tokens):

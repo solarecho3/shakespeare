@@ -43,7 +43,8 @@ class HyperParams:
     manual_seed = 7561
     trng_pct = .90
     learning_rate = 1e-3
-    manual_seed = 7561
+    # manual_seed = 7561
+    manual_seed = 2160
 
 @dataclass
 class Data:
@@ -198,7 +199,7 @@ class Trainer:
         self.vocab_size = Data.vocabulary_size
 
         self.manual_seed = torch.manual_seed(HyperParams.manual_seed)
-        logging.info(f'torch.manual_seed({self.manual_seed.seed})')
+        logging.info(f'{self.manual_seed.seed}: {HyperParams.manual_seed}')
 
     # @logger
     def get_batch(self, train=True):

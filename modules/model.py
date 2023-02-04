@@ -165,7 +165,7 @@ class Decoder:
         Data.decoded_data = decode(text)
         logging.info(f'Data decoded using {Data.vocabulary_type} tokenization: {Data.decoded_data[:500]}...')
 
-class DataTrainer:
+class Trainer:
     """
     Prepare and executing training.
     Parameters

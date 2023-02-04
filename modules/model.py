@@ -43,6 +43,7 @@ class HyperParams:
     manual_seed = 7561
     trng_pct = .90
     learning_rate = 1e-3
+    manual_seed = 7561
 
 @dataclass
 class Data:
@@ -196,10 +197,7 @@ class Trainer:
 
         self.vocab_size = Data.vocabulary_size
 
-        # # TODO address this coupling later
-        # self.decode = vocab.decode_vocabulary
-        
-        self.manual_seed = torch.manual_seed(7561)
+        self.manual_seed = torch.manual_seed(HyperParams.manual_seed)
         logging.info(f'torch.manual_seed({self.manual_seed.seed})')
 
     # @logger

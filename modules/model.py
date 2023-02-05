@@ -36,15 +36,14 @@ def logger(func):
 
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    max_iterations = 13_000
+    max_iterations = 9_000
     evaluation_interval = 1000
     block_size = 32
     batch_size = 8
     manual_seed = 7561
     trng_pct = .90
     learning_rate = 1e-3
-    # manual_seed = 7561
-    manual_seed = 2160
+    manual_seed = 7561
 
 @dataclass
 class Data:
@@ -179,22 +178,22 @@ class Trainer:
     """
 
     @logger
-    def __init__(self, vocab, data, training_set_percentage, block_size: int=8, batch_size: int=32):
+    def __init__(self):
         
         # encode the data
         self.encoded_data = torch.tensor(Data.encoded_data, dtype=torch.long)
         
-        self.training_set_percentage = training_set_percentage
-        self.training_validation_pivot_point = int(training_set_percentage*len(self.encoded_data))
+        self.training_set_percentage = HyperParams.trng_pct
+        self.training_validation_pivot_point = int(self.training_set_percentage*len(self.encoded_data))
         
         self.training_data = self.encoded_data[:self.training_validation_pivot_point]
         self.validation_data = self.encoded_data[self.training_validation_pivot_point:]
 
         # the context length
-        self.block_size = block_size
+        self.block_size = HyperParams.block_size
 
         # number of parallel processes
-        self.batch_size = batch_size
+        self.batch_size = HyperParams.batch_size
 
         self.vocab_size = Data.vocabulary_size
 

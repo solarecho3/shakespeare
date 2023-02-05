@@ -360,3 +360,9 @@ class BigramLanguageModel(torch.nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
 
         return idx
+
+if __name__ == "__main__":
+    DataLoader(data='tiny')
+    VocabularyConfigurer("char")
+    Encoder(Data.data)
+    Trainer().train()

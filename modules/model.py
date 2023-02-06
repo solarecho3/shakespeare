@@ -44,6 +44,7 @@ class HyperParams:
     trng_pct = .90
     learning_rate = 1e-3
     manual_seed = 7561
+    embedding_table_dims = 32
 
 @dataclass
 class Data:
@@ -260,7 +261,7 @@ class Trainer:
 
         # create language model
         # TODO replace this with a decoupled option for multiple language models
-        _model = BigramLanguageModel(self.vocab_size)
+        _model = BigramLanguageModel()
         # send model to 'cuda' device
         self.m = _model.to(HyperParams.device)
         
@@ -301,16 +302,45 @@ class Trainer:
         Decoder(self.m.generate(context, max_new_tokens=500)[0].tolist())
         Data.generation = Data.decoded_data
 
+class Head(torch.nn.Module):
+    """
+    The self-attention head.
+    """
+
+    def __init__(self, head_size):
+        super().__init__()
+        self.key = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.query = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.value = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.register_buffer('tril', torch.tril(torch.ones(HyperParams.block_size, HyperParams.block_size)))
+
+    def forward(self, x):
+        B,T,C = x.shape
+        k = self.key(x)
+        q = self.query(x)
+
+        wei = q @ k.transpose(-2,-1) * C**-0.5
+        wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf'))
+        wei = torch.nn.functional.softmax(wei, dim=-1)
+        v = self.value(x)
+        out = wei @ v
+        return out
+
 class BigramLanguageModel(torch.nn.Module):
     
-    def __init__(self, vocab_size):
+    def __init__(self):
 
         logging.info('Initializing BigramLanguageModel...')
         super().__init__()
 
         # creates tensor of shape vocab_size x vocab_size
-        self.token_embedding_table = torch.nn.Embedding(vocab_size, vocab_size)
-        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}')
+        self.token_embedding_table = torch.nn.Embedding(Data.vocabulary_size, HyperParams.embedding_table_dims)
+        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {Data.vocabulary_size}')
+
+        self.position_embedding_table = torch.nn.Embedding(HyperParams.block_size, HyperParams.embedding_table_dims)
+        self.self_attention_head = Head(HyperParams.embedding_table_dims)
+
+        self.language_modeling_head = torch.nn.Linear(HyperParams.embedding_table_dims, Data.vocabulary_size)
 
     # @logger
     def forward(self, idx, targets=None):
@@ -320,9 +350,15 @@ class BigramLanguageModel(torch.nn.Module):
         in a tensor of (B,T,C) shape
         '''
 
+        B, T = idx.shape
+
         # idx and targets are both (B,T) tensor of integer
         # B = Batch or y-dimension, T = Time or x-dimension
-        logits = self.token_embedding_table(idx)
+        token_embeddings = self.token_embedding_table(idx) # (B,T,C)
+        positional_embeddings = self.position_embedding_table(torch.arange(T, device=HyperParams.device)) # (T,C)
+        x = token_embeddings + positional_embeddings
+        x = self.self_attention_head(x)
+        logits = self.language_modeling_head(x) # (B,T,vocabulary size)
 
         if targets is None:
             loss = None

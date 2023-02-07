@@ -374,7 +374,6 @@ class BigramLanguageModel(torch.nn.Module):
         self.feed_forward = FeedForward()
         self.language_modeling_head = torch.nn.Linear(HyperParams.embedding_table_dims, Data.vocabulary_size)
 
-    # @logger
     def forward(self, idx, targets=None):
         '''
         Logits provide the context by allowing each token
@@ -433,11 +432,12 @@ class BigramLanguageModel(torch.nn.Module):
 
         return idx
 
+@logger
 def clean_logs():
     pass
 
 if __name__ == "__main__":
-    DataLoader(data='')
+    DataLoader(data='tiny')
     VocabularyConfigurer("char")
     Encoder(Data.data)
     Trainer().train()

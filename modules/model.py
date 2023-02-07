@@ -40,7 +40,6 @@ class HyperParams:
     evaluation_interval = 1000
     block_size = 32
     batch_size = 8
-    manual_seed = 7561
     trng_pct = .90
     learning_rate = 1e-3
     manual_seed = 7561
@@ -349,6 +348,8 @@ class FeedForward(torch.nn.Module):
 
     def forward(self, x):
         return self.net(x)
+
+# TODO https://youtu.be/kCc8FmEb1nY?t=5210
 
 class BigramLanguageModel(torch.nn.Module):
     

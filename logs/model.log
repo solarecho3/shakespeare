@@ -2036,3 +2036,182 @@ BO.
 CALLDEAN.
 In is’ solovys hearsper: shou so wive thall I'SREDTARTH.
 You...
+07-Feb-23 06:22:40 - WARNING - ======= __main__ START =======
+07-Feb-23 06:22:40 - INFO - <function DataLoader.__init__ at 0x7f853dcc7eb0> called with args: (<__main__.DataLoader object at 0x7f853dcdb850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:22:40 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:22:40 - INFO - <function VocabularyConfigurer.__init__ at 0x7f853dcfc1f0> called with args: (<__main__.VocabularyConfigurer object at 0x7f853dcdb850>, 'chr'), kwargs: {}...
+07-Feb-23 06:22:40 - CRITICAL - Provide a vocabulary type: ["char"]
+07-Feb-23 06:22:40 - ERROR - Exception raised in __init__. Exception: 'VocabularyConfigurer constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 116, in __init__
+    raise KeyError("VocabularyConfigurer constructor called with improper arguments.")
+KeyError: 'VocabularyConfigurer constructor called with improper arguments.'
+07-Feb-23 06:22:40 - INFO - <function Encoder.__init__ at 0x7f853dcfc430> called with args: (<__main__.Encoder object at 0x7f853dcdb850>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:22:40 - ERROR - Exception raised in __init__. Exception: type object 'Data' has no attribute 'vocabulary_type'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 146, in __init__
+    if Data.vocabulary_type == "char":
+AttributeError: type object 'Data' has no attribute 'vocabulary_type'
+07-Feb-23 06:22:40 - INFO - <function Trainer.__init__ at 0x7f853dcfc670> called with args: (<__main__.Trainer object at 0x7f853dcdb850>,), kwargs: {}...
+07-Feb-23 06:22:40 - ERROR - Exception raised in __init__. Exception: type object 'Data' has no attribute 'encoded_data'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 186, in __init__
+    self.encoded_data = torch.tensor(Data.encoded_data, dtype=torch.long)
+AttributeError: type object 'Data' has no attribute 'encoded_data'
+07-Feb-23 06:22:40 - INFO - <function Trainer.train at 0x7f853dcfc940> called with args: (<__main__.Trainer object at 0x7f853dcdb850>,), kwargs: {}...
+07-Feb-23 06:22:40 - ERROR - Exception raised in train. Exception: 'Trainer' object has no attribute 'training_data'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 249, in train
+    x = self.training_data[:self.block_size]
+AttributeError: 'Trainer' object has no attribute 'training_data'
+07-Feb-23 06:24:06 - WARNING - ======= __main__ START =======
+07-Feb-23 06:24:06 - INFO - <function DataLoader.__init__ at 0x7f20d70b7eb0> called with args: (<__main__.DataLoader object at 0x7f20d6ed3850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:24:06 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:24:06 - INFO - <function VocabularyConfigurer.__init__ at 0x7f20d6ef01f0> called with args: (<__main__.VocabularyConfigurer object at 0x7f20d6ed3850>, 'chr'), kwargs: {}...
+07-Feb-23 06:24:06 - CRITICAL - Provide a vocabulary type: ["char"]
+07-Feb-23 06:24:06 - ERROR - Exception raised in __init__. Exception: 'VocabularyConfigurer constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 116, in __init__
+    raise KeyError("VocabularyConfigurer constructor called with improper arguments.")
+KeyError: 'VocabularyConfigurer constructor called with improper arguments.'
+07-Feb-23 06:24:06 - INFO - <function Encoder.__init__ at 0x7f20d6ef0430> called with args: (<__main__.Encoder object at 0x7f20d6ed3850>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:24:06 - ERROR - Exception raised in __init__. Exception: type object 'Data' has no attribute 'vocabulary_type'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 147, in __init__
+    if Data.vocabulary_type == "char":
+AttributeError: type object 'Data' has no attribute 'vocabulary_type'
+07-Feb-23 06:24:06 - INFO - <function Trainer.__init__ at 0x7f20d6ef0670> called with args: (<__main__.Trainer object at 0x7f20d6ed3850>,), kwargs: {}...
+07-Feb-23 06:24:06 - ERROR - Exception raised in __init__. Exception: type object 'Data' has no attribute 'encoded_data'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 187, in __init__
+    self.encoded_data = torch.tensor(Data.encoded_data, dtype=torch.long)
+AttributeError: type object 'Data' has no attribute 'encoded_data'
+07-Feb-23 06:24:06 - INFO - <function Trainer.train at 0x7f20d6ef0940> called with args: (<__main__.Trainer object at 0x7f20d6ed3850>,), kwargs: {}...
+07-Feb-23 06:24:06 - ERROR - Exception raised in train. Exception: 'Trainer' object has no attribute 'training_data'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 32, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 250, in train
+    x = self.training_data[:self.block_size]
+AttributeError: 'Trainer' object has no attribute 'training_data'
+07-Feb-23 06:25:27 - WARNING - ======= __main__ START =======
+07-Feb-23 06:25:27 - INFO - <function DataLoader.__init__ at 0x7f1b412bbeb0> called with args: (<__main__.DataLoader object at 0x7f1b410d3850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:25:27 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:25:27 - INFO - <function VocabularyConfigurer.__init__ at 0x7f1b410f41f0> called with args: (<__main__.VocabularyConfigurer object at 0x7f1b410d3850>, 'chr'), kwargs: {}...
+07-Feb-23 06:25:27 - CRITICAL - Provide a vocabulary type: ["char"]
+07-Feb-23 06:25:27 - ERROR - Exception raised in __init__. Exception: 'VocabularyConfigurer constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 118, in __init__
+    raise KeyError("VocabularyConfigurer constructor called with improper arguments.")
+KeyError: 'VocabularyConfigurer constructor called with improper arguments.'
+07-Feb-23 06:26:28 - WARNING - ======= __main__ START =======
+07-Feb-23 06:26:28 - INFO - <function DataLoader.__init__ at 0x7f2f36bbbeb0> called with args: (<__main__.DataLoader object at 0x7f2f369d3850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:26:28 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:26:28 - INFO - <function VocabularyConfigurer.__init__ at 0x7f2f369f41f0> called with args: (<__main__.VocabularyConfigurer object at 0x7f2f369d3850>, 'chr'), kwargs: {}...
+07-Feb-23 06:26:28 - CRITICAL - Provide a vocabulary type: ["char"]
+07-Feb-23 06:26:28 - ERROR - Exception raised in __init__:
+'VocabularyConfigurer constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 118, in __init__
+    raise KeyError("VocabularyConfigurer constructor called with improper arguments.")
+KeyError: 'VocabularyConfigurer constructor called with improper arguments.'
+07-Feb-23 06:27:10 - WARNING - ======= __main__ START =======
+07-Feb-23 06:27:10 - INFO - <function DataLoader.__init__ at 0x7f9fccebbeb0> called with args: (<__main__.DataLoader object at 0x7f9fcccd3850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:27:10 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:27:10 - INFO - <function VocabularyConfigurer.__init__ at 0x7f9fcccf41f0> called with args: (<__main__.VocabularyConfigurer object at 0x7f9fcccd3850>, 'char'), kwargs: {}...
+07-Feb-23 06:27:10 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f9fcccf4310> called with args: (<__main__.VocabularyConfigurer object at 0x7f9fcccd3850>,), kwargs: {}...
+07-Feb-23 06:27:10 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 06:27:10 - INFO - <function Encoder.__init__ at 0x7f9fcccf4430> called with args: (<__main__.Encoder object at 0x7f9fcccd3850>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:27:10 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 06:27:10 - INFO - <function Trainer.__init__ at 0x7f9fcccf4670> called with args: (<__main__.Trainer object at 0x7f9fcccd3850>,), kwargs: {}...
+07-Feb-23 06:27:10 - INFO - <built-in method seed of torch._C.Generator object at 0x7fa047133c10>: 7561
+07-Feb-23 06:27:10 - INFO - <function Trainer.train at 0x7f9fcccf4940> called with args: (<__main__.Trainer object at 0x7f9fcccd3850>,), kwargs: {}...
+07-Feb-23 06:27:10 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 06:27:10 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 06:27:11 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 06:27:11 - INFO - Loss: 4.209590911865234
+07-Feb-23 06:27:12 - INFO - Step 0: train loss 4.2200, val loss 4.2192
+07-Feb-23 06:27:14 - INFO - Step 1000: train loss 2.6418, val loss 2.6399
+07-Feb-23 06:27:17 - INFO - Step 2000: train loss 2.5455, val loss 2.5490
+07-Feb-23 06:27:20 - INFO - Step 3000: train loss 2.4569, val loss 2.4565
+07-Feb-23 06:27:23 - INFO - Step 4000: train loss 2.4038, val loss 2.4037
+07-Feb-23 06:27:26 - INFO - Step 5000: train loss 2.3497, val loss 2.3553
+07-Feb-23 06:27:28 - INFO - Step 6000: train loss 2.3227, val loss 2.3239
+07-Feb-23 06:27:31 - INFO - Step 7000: train loss 2.2805, val loss 2.2859
+07-Feb-23 06:27:34 - INFO - Step 8000: train loss 2.2610, val loss 2.2653
+07-Feb-23 06:27:37 - INFO - Step 9000: train loss 2.2353, val loss 2.2334
+07-Feb-23 06:27:40 - INFO - Step 10000: train loss 2.2098, val loss 2.2131
+07-Feb-23 06:27:43 - INFO - Step 11000: train loss 2.1977, val loss 2.1989
+07-Feb-23 06:27:45 - INFO - Step 12000: train loss 2.1880, val loss 2.1849
+07-Feb-23 06:27:48 - INFO - Step 13000: train loss 2.1732, val loss 2.1722
+07-Feb-23 06:27:51 - INFO - Step 14000: train loss 2.1558, val loss 2.1643
+07-Feb-23 06:27:54 - INFO - Step 15000: train loss 2.1529, val loss 2.1484
+07-Feb-23 06:27:57 - INFO - Step 16000: train loss 2.1448, val loss 2.1448
+07-Feb-23 06:27:59 - INFO - Step 17000: train loss 2.1396, val loss 2.1356
+07-Feb-23 06:28:01 - INFO - <function Decoder.__init__ at 0x7f9fcccf4550> called with args: (<__main__.Decoder object at 0x7f9fcccd27d0>, [0, 14, 33, 58, 38, 17, 35, 13, 30, 32, 17, 24, 33, 31, 10, 0, 21, 31, 1, 42, 47, 53, 52, 1, 52, 43, 43,, kwargs: {}...
+07-Feb-23 06:28:01 - INFO - Data decoded using char tokenization: 
+BUtZEWARTELUS:
+IS dion neer reot; not ibepobeston net ful mids I save of hense reed.
+
+QUSTABENRY:
+Whit itonckits piving; 't
+Hiten ete preart litpos paredy And gats soorie but mak tay.
+
+DUKEIUS:
+That sopte nill pan stion rought thou peainty
+For Ho:
+Tharve caes Bearcomes: smile:
+Cays; I suny hind you trunsiongul lort hir to:
+Is a:
+I dobrue seehebus if
+Thim knownerours your of thre of Coud,--bby.
+
+CINGARUS:
+Peaby me nron go whe stasrisepe not to to hitsilld,
+Thould wal, I bolst, wromeiork
+Yor thea...
+07-Feb-23 06:30:19 - WARNING - ======= __main__ START =======
+07-Feb-23 06:30:19 - INFO - <function DataLoader.__init__ at 0x7fc5ca1c3f40> called with args: (<__main__.DataLoader object at 0x7fc5ca1d7850>,), kwargs: {'data': 'teeny'}...
+07-Feb-23 06:30:19 - ERROR - Exception raised in __init__:
+'teeny'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 96, in __init__
+    with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
+KeyError: 'teeny'
+07-Feb-23 06:32:22 - WARNING - ======= __main__ START =======
+07-Feb-23 06:32:22 - INFO - <function DataLoader.__init__ at 0x7f076ab08040> called with args: (<__main__.DataLoader object at 0x7f076aadf850>,), kwargs: {'data': 'teeny'}...
+07-Feb-23 06:32:22 - ERROR - Exception raised in __init__:
+'DataLoader constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 97, in __init__
+    with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
+KeyError: 'teeny'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "/home/adam/Documents/repos/shakespeare/modules/model.py", line 101, in __init__
+    raise KeyError('DataLoader constructor called with improper arguments.')
+KeyError: 'DataLoader constructor called with improper arguments.'

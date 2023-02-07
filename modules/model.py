@@ -89,7 +89,7 @@ class DataLoader:
         kwargs = kwargs.pop('data', None)
 
         if kwargs is None:
-            print(f'Specify a data set. Refer to {path} to configure data sets for loading.')
+            logging.critical(f'Specify a data set. Refer to {path} to configure data sets for loading.')
             raise KeyError('DataLoader constructor called with improper arguments.')
 
         elif kwargs is not None:
@@ -300,7 +300,7 @@ class Trainer:
             # use gradients to update new parameters
             optimizer.step()
         
-        print(loss.item())
+        logging.info(f'Finished training with loss {loss.item()}')
 
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
@@ -433,8 +433,12 @@ class BigramLanguageModel(torch.nn.Module):
 
         return idx
 
+def clean_logs():
+    pass
+
 if __name__ == "__main__":
-    DataLoader(data='tiny')
+    DataLoader(data='')
     VocabularyConfigurer("char")
     Encoder(Data.data)
     Trainer().train()
+    clean_logs()

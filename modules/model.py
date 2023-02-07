@@ -1,75 +1,50 @@
 '''
-# Shakespeare GPT model
-This is the model. It is designed to run asynchronously
-from the presenter, in order to continually update or
-create new models for presentation.
-
-# MV* format
-Each atomic data process will be performed by a different
-class:
-
-| Load       | Parse      | Train       | Configure      | Provide      | Log and Time |
-|------------|------------|-------------|----------------|--------------|--------------|
-| DataLoader | DataParser | DataTrainer | DataConfigurer | DataProvider | DataLogger   |
-
-The model only retrieves data and performs actions upon it.
-To provide data to a presenter, the presenter must request
-the data from the model using the DataProvider class.
-
-The data will be sent by the provider to the requestor in
-a standardized data-interchange format such as JSON, XML, etc...
-
-# Docstring format
-This package follows the  numpy/scipy docstring format.
-
-# Concurrence
-
-The model module is built to concurrently and asynchronously handle
-data. To do so, the model adds desired method calls to a priority queue,
-intended to prevent race conditions. The priority queue processes data
-tasks concurrently; GPU multi-processing for training and CPU
-multi-processing and threading for all other tasks.
-TODO Review this for exactness
 TODO Improve the logger
+TODO Schema validator
 '''
 from __future__ import annotations
 
 import os
-import logging
 import yaml
-import torch
-import tiktoken
-import functools
 import numpy
+import torch
+import logging
+import functools
 
-from dataclasses import dataclass
 from typing import Any
+from dataclasses import dataclass
 
 logging.basicConfig(
     filename='../logs/model.log',
     encoding='utf-8',
-    format='%(asctime)s - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s',
     datefmt='%d-%b-%y %H:%M:%S',
     level=logging.DEBUG
     )
-logging.info(f"======= {__name__} START =======")
+logging.warning(f"======= {__name__} START =======")
 
 def logger(func):
     @functools.wraps(func)
     def wrapper(*args, **kw):
-        # prevent entire dataset from being printed to logs by slicing str(args)
-        logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
-        return func(*args, **kw)
+        try:
+            # prevent entire dataset from being printed to logs by slicing str(args)
+            logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
+            return func(*args, **kw)
+        except Exception as e:
+            logging.exception(f'Exception raised in {func.__name__}. Exception: {str(e)}')
     return wrapper
 
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    max_iterations = 13_000
+    max_iterations = 9_000
     evaluation_interval = 1000
     block_size = 32
     batch_size = 8
     manual_seed = 7561
-    training_set_percentage = .90
+    trng_pct = .90
+    learning_rate = 1e-3
+    manual_seed = 7561
+    embedding_table_dims = 32
 
 @dataclass
 class Data:
@@ -78,253 +53,123 @@ class Data:
     This prevents making one thread of all classes the model.
     """
 
-    data: DataLoader.data
-    vocabulary: DataParser.vocabulary
-    vocabulary_type: DataParser.vocab_type
-    vocabulary_size: DataParser.vocab_size
-    encoder: DataParser.encoder
-    decoder: DataParser.decoder
-    encoded_data: DataTrainer.encoded_data
-    training_validation_pivot_point: DataTrainer.training_validation_pivot_point
-    training_data: DataTrainer.training_data
-    validation_data: DataTrainer.validation_data
-    language_model: DataTrainer.m
-    optimizer: DataTrainer.optimizer
-    generation: DataTrainer.generation
-
-class DataEventQueue:
-    """
-    Multi-threading support for a data event processing queue.
+    data: DataLoader.dataset
+    data_configurations: DataLoader.__init__
     
-    time, priority, action, argument, kwargs
-    """
-
-    @logger
-    def __init__(self):
-        self.queue = []
-
-    @logger
-    def append_event(self, event):
-        """Add an event to the queue."""
-        pass
+    vocabulary: VocabularyConfigurer.create_vocabulary
+    vocabulary_type: VocabularyConfigurer.__init__
+    vocabulary_size: VocabularyConfigurer.create_vocabulary
     
-    @logger
-    def pop_event(self, queue):
-        """Pop from left."""
-        pass
+    encoded_data: Encoder.__init__
+    decoded_data: Decoder.__init__
+    
+    trng_pivot: Trainer.__init__
+    training_data: Trainer.__init__
+    validation_data: Trainer.__init__
+
+    model: BigramLanguageModel.__init__
+    optimizer: Trainer.train
+    generation: Trainer.train
+    token_embedding_table: BigramLanguageModel.__init__
 
 class DataLoader:
-    """
-    A class to load data. References a configuration file, ../data/datasets.yml, to lookup data set paths.
-
-    Parameters
-    ----------
-
-    path: str | os.PathLike - Relative path to the data folder. Default = ../data/
-    """
 
     @logger
-    def __init__(self, datapath: str | os.PathLike="../data/") -> DataLoader:
+    def __init__(self, path: os.PathLike="../config/", **kwargs) -> DataLoader:
+        """
+        Initialize the DataLoader, load the datasets configuration file.
+        """
 
-        self.configpath = os.path.abspath('../config/')
-        
-        with open(f'{self.configpath}/datasets.yml', 'r', encoding='utf-8') as f:
+        path = os.path.join(os.path.abspath(path), 'datasets.yml')
 
-            self.configs = yaml.load(f, Loader=yaml.Loader)
+        with open(os.path.abspath(path), 'r', encoding='utf-8') as config_file:
+            Data.data_configurations = yaml.load(config_file, Loader=yaml.Loader)
+
+        kwargs = kwargs.pop('data', None)
+
+        if kwargs is None:
+            print(f'Specify a data set. Refer to {path} to configure data sets for loading.')
+
+        elif kwargs is not None:
+            with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
+                Data.data = data_file.read()
+                logging.info(f"Data loaded from {data_file}...")
 
     @logger
-    def load(self, **kw):
-        """
-        Load a data set. Pass data=<dataset key> from the datasets.yml configuration file.
+    def validate_schema(self):
+        ...
 
-        Parameters
-        ----------
-        data: str
-            'tiny', 'complete', default=None
-
-        Example
-        -------
-
-        dataloader.load(data='tiny')
-        """
-
-        kw = kw.pop('data', None)
-
-        if kw is None:
-
-            print(f'Specify a data set. Refer to {self.configpath}/datasets.yml...')
-
-        elif kw is not None:
-
-            # the datasets config file is YAML
-            # each data set is specified with:
-            # <data set name>: { path: '', schema: '' } format
-            with open(self.configs[kw]['path'], 'r', encoding='utf-8-sig') as f:
-
-                self.validate_schema(self.configs[kw], 'text')
-                
-                self.data = f.read()
+class VocabularyConfigurer:
 
     @logger
-    def validate_schema(self, f, schema):
+    def __init__(self, type):
         """
-        Validate a data set schema.
+        Configure the vocabulary.
 
-        Parameters
-        ----------
-
-        f: the self.configs attribute with subscriptable keyword specifying the data set
-
-        Example
-        -------
-
-        self.validate_schema(self.configs[kw], 'text')
-        # self.configs[kw] = the data set schema specified in the configuration file
-        # text = the desired schema for which to validate
+        Parameters:
+            type[str]: "char"
         """
         
-        if schema == f['schema']:
-
-            # validate the schema here
-            
-            print('Text schema validated.')
-
-        elif schema != f['schema']:
-
-            print('Schema mismatch. Check arguments or configuration.')
-
+        if type == "char":
+            Data.vocabulary_type = "char"
         else:
-
-            print('Invalid schema.')
-
-class DataParser:
+            logging.critical("Provide a vocabulary type: [\"char\"]")
     
-    """
-    A class to parse loaded data.
-    """
-    
-    @logger
-    def __init__(self, vocab, data: DataLoader, **kw) -> DataParser:
-        """
-        Parse the data from a DataLoader object.
-
-        Must be bound to the DataLoader class
-        in order to inherit the dataset.
-
-        Parameters
-        ----------
-        vocab: str - The type of tokenization.
-            "char" | "subword" | "word"
-
-        data: DataLoader - The instantiated DataLoader class, with loaded data.
-            
-        **kw: kwargs - Pass kwargs to the tokenizer.
-            strip=False - Strips special characters from word tokens.
-        """
-
-        if vocab == "char":
-            self.vocabulary = self.create_character_vocab(data)
-        elif vocab == "subword":
-            self.vocabulary = self.create_subword_vocab(data)
-        elif vocab == "word":
-            self.vocabulary = self.create_word_vocab(data, **kw)
-        else:
-            print("Provide a vocabulary type: ", ["char", "subword", "word"])
+        self._create_vocabulary()
 
     @logger
-    def create_subword_vocab(self, data):
+    def _create_vocabulary(self):
         """
-        Parse and tokenize a subword-based vocabulary using Tiktoken BPE.
-
-        EST (complete works) = 50527
+        Create the vocabulary for tokenization.
         """
-        subword = tiktoken.get_encoding("gpt2")
-        self.vocab_type = "subword"
-        self.vocab_size = subword.n_vocab
-
-        return subword
-
-    @logger
-    def create_character_vocab(self, data):
-        """
-        Parse and tokenize a character-based vocabulary
-        from a DataLoader object.
-        """
-
-        char = sorted(list(set(data.data)))
-        self.vocab_type = "char"
-        self.vocab_size = len(char)
-
-        return char
-
-    @logger
-    def create_word_vocab(self, data, **kw):
-        """
-        Parse and tokenize a word-based vocabulary
-        from a DataLoader object. Strips special characters
-        if the model.DataParser() constructor contains
-        a 'strip=True' argument.
-        """
-
-        if kw.get("strip", False):
-
-            if kw["strip"]:
-
-                for c in ["?", "!", ".", ",", "'s", "-", "_", "[", "]", "(", ")"]:
-                    data.data = data.data.replace(c, "")
-
-        word = sorted(list(set(data.data.split(maxsplit=-1))))
-        self.vocab_type = "word"
-        self.vocab_size = len(word)
-
-        return word
-
-    @logger
-    def encode_vocabulary(self, text):
-        """
-        Encode a vocabulary with simple enumeration.
-        """
-
-        if self.vocab_type == "subword":
-            encode = tiktoken.get_encoding("gpt2").encode(text)
-            return encode
-
-        stoi = {ch:i for i,ch in enumerate(self.vocabulary)}
         
-        if self.vocab_type == "word":
-            encode = lambda s: [stoi[c] for c in s.split(maxsplit=-1)]
-        elif self.vocab_type == "char":
+        if Data.vocabulary_type == "char":
+            Data.vocabulary = sorted(list(set(Data.data)))
+            Data.vocabulary_size = len(Data.vocabulary)
+            logging.info(f"Vocabulary created: {Data.vocabulary[:50]}")
+        
+        else:
+            logging.error("Vocabulary not created.")
+
+class Encoder:
+
+    @logger
+    def __init__(self, text):
+        """
+        Encode a text, using the configured vocabulary.
+
+        Parameters:
+            text[str]: Data.data
+        """
+
+        if Data.vocabulary_type == "char":
+            stoi = {ch:i for i,ch in enumerate(Data.vocabulary)}
             encode = lambda s: [stoi[c] for c in s]
 
-        return encode(text)
+        Data.encoded_data = encode(text)
+        logging.info(f'Data encoded using {Data.vocabulary_type} tokenization: {Data.encoded_data[:50]}...')
+
+class Decoder:
 
     @logger
-    def decode_vocabulary(self, text, spaces=False):
+    def __init__(self, text):
         """
-        Decode a vocabulary with simple enumeration.
+        Decode a text, using the configured vocabulary.
 
-        Parameters
-        ----------
-        spaces: bool - Whether or not to insert whitespace between words.
+        Parameters:
+            text[str]: Data.encoded_data
         """
 
-        if self.vocab_type == "subword":
-            decode = tiktoken.get_encoding("gpt2").decode(text)
-            return decode
-
-        itos = {i:ch for i,ch in enumerate(self.vocabulary)}
-        
-        if spaces:
-            decode = lambda l: " ".join([itos[i] for i in l])
-        else:
+        if Data.vocabulary_type == "char":
+            itos = {i:ch for i,ch in enumerate(Data.vocabulary)}
             decode = lambda l: "".join([itos[i] for i in l])
 
-        return decode(text)
+        Data.decoded_data = decode(text)
+        logging.info(f'Data decoded using {Data.vocabulary_type} tokenization: {Data.decoded_data[:500]}...')
 
-class DataTrainer:
+class Trainer:
     """
     Prepare and executing training.
-
     Parameters
     ----------
     vocab: DataParser - the DataParser object with vocabulary created.
@@ -334,30 +179,27 @@ class DataTrainer:
     """
 
     @logger
-    def __init__(self, vocab: DataParser, data: DataLoader, training_set_percentage: float, block_size: int=8, batch_size: int=32) -> DataTrainer:
+    def __init__(self):
         
         # encode the data
-        self.encoded_data = torch.tensor(vocab.encode_vocabulary(data.data), dtype=torch.long)
+        self.encoded_data = torch.tensor(Data.encoded_data, dtype=torch.long)
         
-        self.training_set_percentage = training_set_percentage
-        self.training_validation_pivot_point = int(training_set_percentage*len(self.encoded_data))
+        self.training_set_percentage = HyperParams.trng_pct
+        self.training_validation_pivot_point = int(self.training_set_percentage*len(self.encoded_data))
         
         self.training_data = self.encoded_data[:self.training_validation_pivot_point]
         self.validation_data = self.encoded_data[self.training_validation_pivot_point:]
 
         # the context length
-        self.block_size = block_size
+        self.block_size = HyperParams.block_size
 
         # number of parallel processes
-        self.batch_size = batch_size
+        self.batch_size = HyperParams.batch_size
 
-        self.vocab_size = vocab.vocab_size
+        self.vocab_size = Data.vocabulary_size
 
-        # TODO address this coupling later
-        self.decode = vocab.decode_vocabulary
-        
-        self.manual_seed = torch.manual_seed(7561)
-        logging.info(f'torch.manual_seed({self.manual_seed.seed})')
+        self.manual_seed = torch.manual_seed(HyperParams.manual_seed)
+        logging.info(f'{self.manual_seed.seed}: {HyperParams.manual_seed}')
 
     # @logger
     def get_batch(self, train=True):
@@ -399,7 +241,6 @@ class DataTrainer:
         Chunk a block of 9 characters,
         x: inputs
         y: targets
-
         context: x to and including tth char
         target: y at the tth char
         """
@@ -420,7 +261,7 @@ class DataTrainer:
 
         # create language model
         # TODO replace this with a decoupled option for multiple language models
-        _model = BigramLanguageModel(self.vocab_size)
+        _model = BigramLanguageModel()
         # send model to 'cuda' device
         self.m = _model.to(HyperParams.device)
         
@@ -458,20 +299,48 @@ class DataTrainer:
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
         # DataTrainer.generation
-        self.generation = self.decode(self.m.generate(context, max_new_tokens=500)[0].tolist())
-        print(self.generation)
+        Decoder(self.m.generate(context, max_new_tokens=500)[0].tolist())
+        Data.generation = Data.decoded_data
 
+class Head(torch.nn.Module):
+    """
+    The self-attention head.
+    """
+
+    def __init__(self, head_size):
+        super().__init__()
+        self.key = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.query = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.value = torch.nn.Linear(HyperParams.embedding_table_dims, head_size, bias=False)
+        self.register_buffer('tril', torch.tril(torch.ones(HyperParams.block_size, HyperParams.block_size)))
+
+    def forward(self, x):
+        B,T,C = x.shape
+        k = self.key(x)
+        q = self.query(x)
+
+        wei = q @ k.transpose(-2,-1) * C**-0.5
+        wei = wei.masked_fill(self.tril[:T, :T] == 0, float('-inf'))
+        wei = torch.nn.functional.softmax(wei, dim=-1)
+        v = self.value(x)
+        out = wei @ v
+        return out
 
 class BigramLanguageModel(torch.nn.Module):
     
-    def __init__(self, vocab_size):
+    def __init__(self):
 
         logging.info('Initializing BigramLanguageModel...')
         super().__init__()
 
         # creates tensor of shape vocab_size x vocab_size
-        self.token_embedding_table = torch.nn.Embedding(vocab_size, vocab_size)
-        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {vocab_size}')
+        self.token_embedding_table = torch.nn.Embedding(Data.vocabulary_size, HyperParams.embedding_table_dims)
+        logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {Data.vocabulary_size}')
+
+        self.position_embedding_table = torch.nn.Embedding(HyperParams.block_size, HyperParams.embedding_table_dims)
+        self.self_attention_head = Head(HyperParams.embedding_table_dims)
+
+        self.language_modeling_head = torch.nn.Linear(HyperParams.embedding_table_dims, Data.vocabulary_size)
 
     # @logger
     def forward(self, idx, targets=None):
@@ -481,9 +350,15 @@ class BigramLanguageModel(torch.nn.Module):
         in a tensor of (B,T,C) shape
         '''
 
+        B, T = idx.shape
+
         # idx and targets are both (B,T) tensor of integer
         # B = Batch or y-dimension, T = Time or x-dimension
-        logits = self.token_embedding_table(idx)
+        token_embeddings = self.token_embedding_table(idx) # (B,T,C)
+        positional_embeddings = self.position_embedding_table(torch.arange(T, device=HyperParams.device)) # (T,C)
+        x = token_embeddings + positional_embeddings
+        x = self.self_attention_head(x)
+        logits = self.language_modeling_head(x) # (B,T,vocabulary size)
 
         if targets is None:
             loss = None
@@ -521,3 +396,9 @@ class BigramLanguageModel(torch.nn.Module):
             idx = torch.cat((idx, idx_next), dim=1) # (B, T+1)
 
         return idx
+
+if __name__ == "__main__":
+    DataLoader(data='tiny')
+    VocabularyConfigurer("char")
+    Encoder(Data.data)
+    Trainer().train()

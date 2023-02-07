@@ -5,6 +5,7 @@ TODO Schema validator
 from __future__ import annotations
 
 import os
+import sys
 import yaml
 import numpy
 import torch
@@ -31,7 +32,8 @@ def logger(func):
             logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
             return func(*args, **kw)
         except Exception as e:
-            logging.exception(f'Exception raised in {func.__name__}. Exception: {str(e)}')
+            logging.exception(f'Exception raised in {func.__name__}:\n{str(e)}')
+            raise SystemExit(1)
     return wrapper
 
 class HyperParams:
@@ -88,12 +90,15 @@ class DataLoader:
 
         if kwargs is None:
             print(f'Specify a data set. Refer to {path} to configure data sets for loading.')
+            raise KeyError('DataLoader constructor called with improper arguments.')
 
         elif kwargs is not None:
-            with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
-                Data.data = data_file.read()
-                logging.info(f"Data loaded from {data_file}...")
-
+            try:
+                with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
+                    Data.data = data_file.read()
+                    logging.info(f"Data loaded from {data_file}...")
+            except KeyError:
+                raise KeyError('DataLoader constructor called with improper arguments.')
     @logger
     def validate_schema(self):
         ...
@@ -113,6 +118,7 @@ class VocabularyConfigurer:
             Data.vocabulary_type = "char"
         else:
             logging.critical("Provide a vocabulary type: [\"char\"]")
+            raise KeyError("VocabularyConfigurer constructor called with improper arguments.")
     
         self._create_vocabulary()
 
@@ -129,6 +135,7 @@ class VocabularyConfigurer:
         
         else:
             logging.error("Vocabulary not created.")
+            raise AttributeError("Vocabulary failed to create. Check arguments for the VocabularyConfigurer constructor.")
 
 class Encoder:
 

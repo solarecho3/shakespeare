@@ -380,8 +380,11 @@ class BigramLanguageModel(torch.nn.Module):
         # idx is (B, T) array of indices in the current context
         for _ in range(max_new_tokens):
 
+            # crop idx to the last HyperParams.block_size tokens
+            idx_cond = idx[:, -HyperParams.block_size:]
+
             # get predictions
-            logits, loss = self(idx)
+            logits, loss = self(idx_cond)
 
             # focus only on the last time step
             logits = logits[:, -1, :] # becomes (B, C)

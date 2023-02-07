@@ -1,5 +1,5 @@
 .ipynb_checkpoints
-model.log
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -51,7 +51,7 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
+# *.log
 
 # Sphinx documentation
 docs/_build/

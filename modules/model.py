@@ -40,7 +40,6 @@ class HyperParams:
     evaluation_interval = 1000
     block_size = 32
     batch_size = 8
-    manual_seed = 7561
     trng_pct = .90
     learning_rate = 1e-3
     manual_seed = 7561

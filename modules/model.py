@@ -36,7 +36,7 @@ def logger(func):
 
 class HyperParams:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    max_iterations = 9_000
+    max_iterations = 15_000
     evaluation_interval = 1000
     block_size = 32
     batch_size = 8
@@ -326,6 +326,19 @@ class Head(torch.nn.Module):
         out = wei @ v
         return out
 
+class MultiHeadAttention(torch.nn.Module):
+    """
+    The heads network.
+    """
+
+    def __init__(self, num_heads, head_size):
+        super().__init__()
+        self.heads = torch.nn.ModuleList([Head(head_size) for _ in range(num_heads)])
+
+    def forward(self, x):
+        return torch.cat([h(x) for h in self.heads], dim=-1)
+
+
 class BigramLanguageModel(torch.nn.Module):
     
     def __init__(self):
@@ -338,8 +351,7 @@ class BigramLanguageModel(torch.nn.Module):
         logging.info(f'Embedding table created: {self.token_embedding_table} with vocabulary size {Data.vocabulary_size}')
 
         self.position_embedding_table = torch.nn.Embedding(HyperParams.block_size, HyperParams.embedding_table_dims)
-        self.self_attention_head = Head(HyperParams.embedding_table_dims)
-
+        self.self_attention_heads = MultiHeadAttention(4, HyperParams.embedding_table_dims//4) # 4 heads of 8-dimensional self-attention
         self.language_modeling_head = torch.nn.Linear(HyperParams.embedding_table_dims, Data.vocabulary_size)
 
     # @logger
@@ -357,7 +369,7 @@ class BigramLanguageModel(torch.nn.Module):
         token_embeddings = self.token_embedding_table(idx) # (B,T,C)
         positional_embeddings = self.position_embedding_table(torch.arange(T, device=HyperParams.device)) # (T,C)
         x = token_embeddings + positional_embeddings
-        x = self.self_attention_head(x)
+        x = self.self_attention_heads(x)
         logits = self.language_modeling_head(x) # (B,T,vocabulary size)
 
         if targets is None:

@@ -350,6 +350,8 @@ class FeedForward(torch.nn.Module):
     def forward(self, x):
         return self.net(x)
 
+# TODO https://youtu.be/kCc8FmEb1nY?t=5210
+
 class BigramLanguageModel(torch.nn.Module):
     
     def __init__(self):

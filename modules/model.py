@@ -433,8 +433,12 @@ class BigramLanguageModel(torch.nn.Module):
 
         return idx
 
+def clean_logs():
+    pass
+
 if __name__ == "__main__":
-    DataLoader(data='tiny')
+    DataLoader(data='')
     VocabularyConfigurer("char")
     Encoder(Data.data)
     Trainer().train()
+    clean_logs()

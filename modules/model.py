@@ -49,6 +49,7 @@ class HyperParams:
     n_heads = 8
     n_layers = 8
     dropout = 0.2
+    max_gen_tokens = 5_000
 
 @dataclass
 class Data:
@@ -289,7 +290,7 @@ class Trainer:
 
         for iteration in range(HyperParams.max_iterations):
 
-            if iteration %  HyperParams.evaluation_interval == 0:
+            if iteration % HyperParams.evaluation_interval == 0:
                 losses = self.estimate_loss()
                 logging.info(f'Step {iteration}: train loss {losses["train"]:.4f}, val loss {losses["val"]:.4f}')
             
@@ -313,7 +314,7 @@ class Trainer:
         context = torch.zeros((1,1), dtype=torch.long, device=HyperParams.device)
 
         # DataTrainer.generation
-        Decoder(self.m.generate(context, max_new_tokens=500)[0].tolist())
+        Decoder(self.m.generate(context, max_new_tokens=HyperParams.max_gen_tokens)[0].tolist())
         Data.generation = Data.decoded_data
 
 class Head(torch.nn.Module):

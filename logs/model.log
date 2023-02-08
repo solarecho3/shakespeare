@@ -1,0 +1,1154 @@
+07-Feb-23 06:43:03 - WARNING - ======= __main__ START =======
+07-Feb-23 06:43:03 - INFO - <function DataLoader.__init__ at 0x7f7c521fc040> called with args: (<__main__.DataLoader object at 0x7f7c521d3850>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:43:03 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:43:03 - INFO - <function VocabularyConfigurer.__init__ at 0x7f7c521fc310> called with args: (<__main__.VocabularyConfigurer object at 0x7f7c521d3850>, 'char'), kwargs: {}...
+07-Feb-23 06:43:03 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f7c521fc430> called with args: (<__main__.VocabularyConfigurer object at 0x7f7c521d3850>,), kwargs: {}...
+07-Feb-23 06:43:03 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 06:43:03 - INFO - <function Encoder.__init__ at 0x7f7c521fc550> called with args: (<__main__.Encoder object at 0x7f7c521d3850>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:43:03 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 06:43:03 - INFO - <function Trainer.__init__ at 0x7f7c521fc790> called with args: (<__main__.Trainer object at 0x7f7c521d3850>,), kwargs: {}...
+07-Feb-23 06:43:03 - INFO - <built-in method seed of torch._C.Generator object at 0x7f7ccc627c10>: 7561
+07-Feb-23 06:43:03 - INFO - <function Trainer.train at 0x7f7c521fca60> called with args: (<__main__.Trainer object at 0x7f7c521d3850>,), kwargs: {}...
+07-Feb-23 06:43:03 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 06:43:03 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 06:43:04 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 06:43:04 - INFO - Loss: 4.209590911865234
+07-Feb-23 06:43:05 - INFO - Step 0: train loss 4.2200, val loss 4.2192
+07-Feb-23 06:43:07 - INFO - Step 1000: train loss 2.6418, val loss 2.6399
+07-Feb-23 06:43:10 - INFO - Step 2000: train loss 2.5455, val loss 2.5490
+07-Feb-23 06:43:13 - INFO - Step 3000: train loss 2.4569, val loss 2.4565
+07-Feb-23 06:43:16 - INFO - Step 4000: train loss 2.4038, val loss 2.4037
+07-Feb-23 06:43:18 - INFO - Step 5000: train loss 2.3497, val loss 2.3553
+07-Feb-23 06:43:21 - INFO - Step 6000: train loss 2.3227, val loss 2.3239
+07-Feb-23 06:43:24 - INFO - Step 7000: train loss 2.2805, val loss 2.2859
+07-Feb-23 06:43:27 - INFO - Step 8000: train loss 2.2610, val loss 2.2653
+07-Feb-23 06:43:30 - INFO - Step 9000: train loss 2.2353, val loss 2.2334
+07-Feb-23 06:43:33 - INFO - Step 10000: train loss 2.2098, val loss 2.2131
+07-Feb-23 06:43:36 - INFO - Step 11000: train loss 2.1977, val loss 2.1989
+07-Feb-23 06:43:38 - INFO - Step 12000: train loss 2.1880, val loss 2.1849
+07-Feb-23 06:43:41 - INFO - Step 13000: train loss 2.1732, val loss 2.1722
+07-Feb-23 06:43:44 - INFO - Step 14000: train loss 2.1558, val loss 2.1643
+07-Feb-23 06:43:47 - INFO - Step 15000: train loss 2.1529, val loss 2.1484
+07-Feb-23 06:43:50 - INFO - Step 16000: train loss 2.1448, val loss 2.1448
+07-Feb-23 06:43:53 - INFO - Step 17000: train loss 2.1396, val loss 2.1356
+07-Feb-23 06:43:54 - INFO - <function Decoder.__init__ at 0x7f7c521fc670> called with args: (<__main__.Decoder object at 0x7f7c521d2920>, [0, 14, 33, 58, 38, 17, 35, 13, 30, 32, 17, 24, 33, 31, 10, 0, 21, 31, 1, 42, 47, 53, 52, 1, 52, 43, 43,, kwargs: {}...
+07-Feb-23 06:43:54 - INFO - Data decoded using char tokenization: 
+BUtZEWARTELUS:
+IS dion neer reot; not ibepobeston net ful mids I save of hense reed.
+
+QUSTABENRY:
+Whit itonckits piving; 't
+Hiten ete preart litpos paredy And gats soorie but mak tay.
+
+DUKEIUS:
+That sopte nill pan stion rought thou peainty
+For Ho:
+Tharve caes Bearcomes: smile:
+Cays; I suny hind you trunsiongul lort hir to:
+Is a:
+I dobrue seehebus if
+Thim knownerours your of thre of Coud,--bby.
+
+CINGARUS:
+Peaby me nron go whe stasrisepe not to to hitsilld,
+Thould wal, I bolst, wromeiork
+Yor thea...07-Feb-23 06:53:53 - WARNING - ======= __main__ START =======
+07-Feb-23 06:53:53 - INFO - <function DataLoader.__init__ at 0x7fbee22bbf40> called with args: (<__main__.DataLoader object at 0x7fbee20d3370>,), kwargs: {'data': ''}...
+07-Feb-23 06:53:53 - ERROR - Exception raised in __init__:
+'DataLoader constructor called with improper arguments.'
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 97, in __init__
+    with open(Data.data_configurations[kwargs]['path'], 'r', encoding='utf-8-sig') as data_file:
+KeyError: ''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 101, in __init__
+    raise KeyError('DataLoader constructor called with improper arguments.')
+KeyError: 'DataLoader constructor called with improper arguments.'
+07-Feb-23 06:54:20 - WARNING - ======= __main__ START =======
+07-Feb-23 06:54:20 - INFO - <function DataLoader.__init__ at 0x7f75536cbf40> called with args: (<__main__.DataLoader object at 0x7f75536df370>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:54:20 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:54:20 - INFO - <function VocabularyConfigurer.__init__ at 0x7f7553704280> called with args: (<__main__.VocabularyConfigurer object at 0x7f75536df370>, 'char'), kwargs: {}...
+07-Feb-23 06:54:20 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f75537043a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f75536df370>,), kwargs: {}...
+07-Feb-23 06:54:20 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 06:54:20 - INFO - <function Encoder.__init__ at 0x7f75537044c0> called with args: (<__main__.Encoder object at 0x7f75536df370>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:54:20 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 06:54:20 - INFO - <function Trainer.__init__ at 0x7f7553704700> called with args: (<__main__.Trainer object at 0x7f75536df370>,), kwargs: {}...
+07-Feb-23 06:54:20 - INFO - <built-in method seed of torch._C.Generator object at 0x7f75cda87c10>: 7561
+07-Feb-23 06:54:20 - INFO - <function Trainer.train at 0x7f75537049d0> called with args: (<__main__.Trainer object at 0x7f75536df370>,), kwargs: {}...
+07-Feb-23 06:54:21 - ERROR - Exception raised in __init__:
+'BigramLanguageModel' object has no attribute '_modules'
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 32, in wrapper
+    logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2006, in __repr__
+    for key, module in self._modules.items():
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1269, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'BigramLanguageModel' object has no attribute '_modules'
+07-Feb-23 06:54:52 - WARNING - ======= __main__ START =======
+07-Feb-23 06:54:52 - INFO - <function DataLoader.__init__ at 0x7f5e378c3f40> called with args: (<__main__.DataLoader object at 0x7f5e378d7d90>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:54:52 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:54:52 - INFO - <function VocabularyConfigurer.__init__ at 0x7f5e378fc280> called with args: (<__main__.VocabularyConfigurer object at 0x7f5e378d7d90>, 'char'), kwargs: {}...
+07-Feb-23 06:54:52 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f5e378fc3a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f5e378d7d90>,), kwargs: {}...
+07-Feb-23 06:54:52 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 06:54:52 - INFO - <function Encoder.__init__ at 0x7f5e378fc4c0> called with args: (<__main__.Encoder object at 0x7f5e378d7d90>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:54:52 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 06:54:52 - INFO - <function Trainer.__init__ at 0x7f5e378fc700> called with args: (<__main__.Trainer object at 0x7f5e378d7d90>,), kwargs: {}...
+07-Feb-23 06:54:52 - INFO - <built-in method seed of torch._C.Generator object at 0x7f5eb1d4fc10>: 7561
+07-Feb-23 06:54:52 - INFO - <function Trainer.train at 0x7f5e378fc9d0> called with args: (<__main__.Trainer object at 0x7f5e378d7d90>,), kwargs: {}...
+07-Feb-23 06:54:52 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 06:54:52 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 06:54:52 - ERROR - Exception raised in __init__:
+'MultiHeadAttention' object has no attribute '_modules'
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 32, in wrapper
+    logging.info(f'{func} called with args: {str(args)[:150]}, kwargs: {kw}...')
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 2006, in __repr__
+    for key, module in self._modules.items():
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1269, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'MultiHeadAttention' object has no attribute '_modules'
+07-Feb-23 06:55:26 - WARNING - ======= __main__ START =======
+07-Feb-23 06:55:26 - INFO - <function DataLoader.__init__ at 0x7f3e222cbf40> called with args: (<__main__.DataLoader object at 0x7f3e222df8e0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 06:55:26 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 06:55:26 - INFO - <function VocabularyConfigurer.__init__ at 0x7f3e22300280> called with args: (<__main__.VocabularyConfigurer object at 0x7f3e222df8e0>, 'char'), kwargs: {}...
+07-Feb-23 06:55:26 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f3e223003a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f3e222df8e0>,), kwargs: {}...
+07-Feb-23 06:55:26 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 06:55:26 - INFO - <function Encoder.__init__ at 0x7f3e223004c0> called with args: (<__main__.Encoder object at 0x7f3e222df8e0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 06:55:26 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 06:55:26 - INFO - <function Trainer.__init__ at 0x7f3e22300700> called with args: (<__main__.Trainer object at 0x7f3e222df8e0>,), kwargs: {}...
+07-Feb-23 06:55:26 - INFO - <built-in method seed of torch._C.Generator object at 0x7f3e9c687c10>: 7561
+07-Feb-23 06:55:26 - INFO - <function Trainer.train at 0x7f3e223009d0> called with args: (<__main__.Trainer object at 0x7f3e222df8e0>,), kwargs: {}...
+07-Feb-23 06:55:26 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 06:55:26 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 06:55:27 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 06:55:27 - INFO - Loss: 4.209590911865234
+07-Feb-23 06:55:28 - INFO - Step 0: train loss 4.2200, val loss 4.2192
+07-Feb-23 06:55:31 - INFO - Step 1000: train loss 2.6418, val loss 2.6399
+07-Feb-23 06:55:33 - INFO - Step 2000: train loss 2.5455, val loss 2.5490
+07-Feb-23 06:55:36 - INFO - Step 3000: train loss 2.4569, val loss 2.4565
+07-Feb-23 06:55:39 - INFO - Step 4000: train loss 2.4038, val loss 2.4037
+07-Feb-23 06:55:42 - INFO - Step 5000: train loss 2.3497, val loss 2.3553
+07-Feb-23 06:55:45 - INFO - Step 6000: train loss 2.3227, val loss 2.3239
+07-Feb-23 06:55:48 - INFO - Step 7000: train loss 2.2805, val loss 2.2859
+07-Feb-23 06:55:51 - INFO - Step 8000: train loss 2.2610, val loss 2.2653
+07-Feb-23 06:55:53 - INFO - Step 9000: train loss 2.2353, val loss 2.2334
+07-Feb-23 06:55:56 - INFO - Step 10000: train loss 2.2098, val loss 2.2131
+07-Feb-23 06:55:59 - INFO - Step 11000: train loss 2.1977, val loss 2.1989
+07-Feb-23 06:56:02 - INFO - Step 12000: train loss 2.1880, val loss 2.1849
+07-Feb-23 06:56:05 - INFO - Step 13000: train loss 2.1732, val loss 2.1722
+07-Feb-23 06:56:08 - INFO - Step 14000: train loss 2.1558, val loss 2.1643
+07-Feb-23 06:56:10 - INFO - Step 15000: train loss 2.1529, val loss 2.1484
+07-Feb-23 06:56:13 - INFO - Step 16000: train loss 2.1448, val loss 2.1448
+07-Feb-23 06:56:16 - INFO - Step 17000: train loss 2.1396, val loss 2.1356
+07-Feb-23 06:56:17 - INFO - Finished training with loss 1.9972829818725586
+07-Feb-23 06:56:17 - INFO - <function Decoder.__init__ at 0x7f3e223005e0> called with args: (<__main__.Decoder object at 0x7f3e222deaa0>, [0, 14, 33, 58, 38, 17, 35, 13, 30, 32, 17, 24, 33, 31, 10, 0, 21, 31, 1, 42, 47, 53, 52, 1, 52, 43, 43,, kwargs: {}...
+07-Feb-23 06:56:17 - INFO - Data decoded using char tokenization: 
+BUtZEWARTELUS:
+IS dion neer reot; not ibepobeston net ful mids I save of hense reed.
+
+QUSTABENRY:
+Whit itonckits piving; 't
+Hiten ete preart litpos paredy And gats soorie but mak tay.
+
+DUKEIUS:
+That sopte nill pan stion rought thou peainty
+For Ho:
+Tharve caes Bearcomes: smile:
+Cays; I suny hind you trunsiongul lort hir to:
+Is a:
+I dobrue seehebus if
+Thim knownerours your of thre of Coud,--bby.
+
+CINGARUS:
+Peaby me nron go whe stasrisepe not to to hitsilld,
+Thould wal, I bolst, wromeiork
+Yor thea...
+07-Feb-23 06:56:17 - INFO - <function clean_logs at 0x7f3e227ed360> called with args: (), kwargs: {}...
+07-Feb-23 16:04:18 - WARNING - ======= __main__ START =======
+07-Feb-23 16:04:18 - INFO - <function DataLoader.__init__ at 0x7f5872ac7f40> called with args: (<__main__.DataLoader object at 0x7f5872adfca0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:04:18 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:04:18 - INFO - <function VocabularyConfigurer.__init__ at 0x7f5872b00280> called with args: (<__main__.VocabularyConfigurer object at 0x7f5872adfca0>, 'char'), kwargs: {}...
+07-Feb-23 16:04:18 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f5872b003a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f5872adfca0>,), kwargs: {}...
+07-Feb-23 16:04:18 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:04:18 - INFO - <function Encoder.__init__ at 0x7f5872b004c0> called with args: (<__main__.Encoder object at 0x7f5872adfca0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:04:18 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:04:18 - INFO - <function Trainer.__init__ at 0x7f5872b00700> called with args: (<__main__.Trainer object at 0x7f5872adfca0>,), kwargs: {}...
+07-Feb-23 16:04:18 - INFO - <built-in method seed of torch._C.Generator object at 0x7f58ecec3c10>: 7561
+07-Feb-23 16:04:18 - INFO - <function Trainer.train at 0x7f5872b009d0> called with args: (<__main__.Trainer object at 0x7f5872adfca0>,), kwargs: {}...
+07-Feb-23 16:04:19 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:04:19 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:04:20 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 16:04:20 - INFO - Loss: 4.209590911865234
+07-Feb-23 16:04:20 - INFO - Step 0: train loss 4.2200, val loss 4.2192
+07-Feb-23 16:04:23 - INFO - Step 1000: train loss 2.6418, val loss 2.6399
+07-Feb-23 16:04:26 - INFO - Step 2000: train loss 2.5455, val loss 2.5490
+07-Feb-23 16:04:29 - INFO - Step 3000: train loss 2.4569, val loss 2.4565
+07-Feb-23 16:04:32 - INFO - Step 4000: train loss 2.4038, val loss 2.4037
+07-Feb-23 16:04:35 - INFO - Step 5000: train loss 2.3497, val loss 2.3553
+07-Feb-23 16:04:37 - INFO - Step 6000: train loss 2.3227, val loss 2.3239
+07-Feb-23 16:04:40 - INFO - Step 7000: train loss 2.2805, val loss 2.2859
+07-Feb-23 16:04:43 - INFO - Step 8000: train loss 2.2610, val loss 2.2653
+07-Feb-23 16:04:46 - INFO - Step 9000: train loss 2.2353, val loss 2.2334
+07-Feb-23 16:04:49 - INFO - Step 10000: train loss 2.2098, val loss 2.2131
+07-Feb-23 16:04:51 - INFO - Step 11000: train loss 2.1977, val loss 2.1989
+07-Feb-23 16:04:54 - INFO - Step 12000: train loss 2.1880, val loss 2.1849
+07-Feb-23 16:04:57 - INFO - Step 13000: train loss 2.1732, val loss 2.1722
+07-Feb-23 16:04:59 - INFO - Step 14000: train loss 2.1558, val loss 2.1643
+07-Feb-23 16:05:02 - INFO - Step 15000: train loss 2.1529, val loss 2.1484
+07-Feb-23 16:05:05 - INFO - Step 16000: train loss 2.1448, val loss 2.1448
+07-Feb-23 16:05:08 - INFO - Step 17000: train loss 2.1396, val loss 2.1356
+07-Feb-23 16:05:09 - INFO - Finished training with loss 1.9972829818725586
+07-Feb-23 16:05:09 - INFO - <function Decoder.__init__ at 0x7f5872b005e0> called with args: (<__main__.Decoder object at 0x7f5872adf0d0>, [0, 14, 33, 58, 38, 17, 35, 13, 30, 32, 17, 24, 33, 31, 10, 0, 21, 31, 1, 42, 47, 53, 52, 1, 52, 43, 43,, kwargs: {}...
+07-Feb-23 16:05:09 - INFO - Data decoded using char tokenization: 
+BUtZEWARTELUS:
+IS dion neer reot; not ibepobeston net ful mids I save of hense reed.
+
+QUSTABENRY:
+Whit itonckits piving; 't
+Hiten ete preart litpos paredy And gats soorie but mak tay.
+
+DUKEIUS:
+That sopte nill pan stion rought thou peainty
+For Ho:
+Tharve caes Bearcomes: smile:
+Cays; I suny hind you trunsiongul lort hir to:
+Is a:
+I dobrue seehebus if
+Thim knownerours your of thre of Coud,--bby.
+
+CINGARUS:
+Peaby me nron go whe stasrisepe not to to hitsilld,
+Thould wal, I bolst, wromeiork
+Yor thea...
+07-Feb-23 16:05:09 - INFO - <function clean_logs at 0x7f5872fed360> called with args: (), kwargs: {}...
+07-Feb-23 16:09:34 - WARNING - ======= __main__ START =======
+07-Feb-23 16:09:34 - INFO - <function DataLoader.__init__ at 0x7f6946108040> called with args: (<__main__.DataLoader object at 0x7f69460e3ca0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:09:34 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:09:34 - INFO - <function VocabularyConfigurer.__init__ at 0x7f6946108310> called with args: (<__main__.VocabularyConfigurer object at 0x7f69460e3ca0>, 'char'), kwargs: {}...
+07-Feb-23 16:09:34 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f6946108430> called with args: (<__main__.VocabularyConfigurer object at 0x7f69460e3ca0>,), kwargs: {}...
+07-Feb-23 16:09:34 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:09:34 - INFO - <function Encoder.__init__ at 0x7f6946108550> called with args: (<__main__.Encoder object at 0x7f69460e3ca0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:09:34 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:09:34 - INFO - <function Trainer.__init__ at 0x7f6946108790> called with args: (<__main__.Trainer object at 0x7f69460e3ca0>,), kwargs: {}...
+07-Feb-23 16:09:34 - INFO - <built-in method seed of torch._C.Generator object at 0x7f69c0487c10>: 7561
+07-Feb-23 16:09:34 - INFO - <function Trainer.train at 0x7f6946108a60> called with args: (<__main__.Trainer object at 0x7f69460e3ca0>,), kwargs: {}...
+07-Feb-23 16:09:35 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:09:35 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:09:35 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 16:09:35 - INFO - Loss: 4.174333572387695
+07-Feb-23 16:09:37 - INFO - Step 0: train loss 4.1780, val loss 4.1777
+07-Feb-23 16:09:43 - INFO - Step 1000: train loss 3.1517, val loss 3.1509
+07-Feb-23 16:09:50 - INFO - Step 2000: train loss 2.7107, val loss 2.7043
+07-Feb-23 16:09:56 - INFO - Step 3000: train loss 2.5173, val loss 2.5148
+07-Feb-23 16:10:02 - INFO - Step 4000: train loss 2.4518, val loss 2.4486
+07-Feb-23 16:10:08 - INFO - Step 5000: train loss 2.4062, val loss 2.4062
+07-Feb-23 16:10:15 - INFO - Step 6000: train loss 2.3805, val loss 2.3819
+07-Feb-23 16:10:21 - INFO - Step 7000: train loss 2.3577, val loss 2.3614
+07-Feb-23 16:10:27 - INFO - Step 8000: train loss 2.3420, val loss 2.3368
+07-Feb-23 16:10:33 - INFO - Step 9000: train loss 2.3131, val loss 2.3088
+07-Feb-23 16:10:39 - INFO - Step 10000: train loss 2.2928, val loss 2.2920
+07-Feb-23 16:10:46 - INFO - Step 11000: train loss 2.2825, val loss 2.2797
+07-Feb-23 16:10:52 - INFO - Step 12000: train loss 2.2545, val loss 2.2557
+07-Feb-23 16:10:58 - INFO - Step 13000: train loss 2.2437, val loss 2.2418
+07-Feb-23 16:11:04 - INFO - Step 14000: train loss 2.2497, val loss 2.2443
+07-Feb-23 16:11:10 - INFO - Step 15000: train loss 2.2239, val loss 2.2257
+07-Feb-23 16:11:17 - INFO - Step 16000: train loss 2.2271, val loss 2.2303
+07-Feb-23 16:11:23 - INFO - Step 17000: train loss 2.2083, val loss 2.2043
+07-Feb-23 16:11:25 - INFO - Finished training with loss 2.0714569091796875
+07-Feb-23 16:11:26 - INFO - <function Decoder.__init__ at 0x7f6946108670> called with args: (<__main__.Decoder object at 0x7f69460e3a90>, [0, 0, 18, 35, 21, 32, 20, 17, 31, 32, 10, 0, 21, 44, 1, 52, 53, 58, 1, 42, 47, 45, 46, 58, 1, 61, 43, 5, kwargs: {}...
+07-Feb-23 16:11:26 - INFO - Data decoded using char tokenization: 
+
+FWITHEST:
+If not dight wer yours not ibppob stonce be ucher trues at thave stare:
+MARIANT:
+Why bo noul-aghckit'd sof weariocinen ele preant lerpos par dhuch ogat bast is btir pois yhou to-uPbudigker of elnils par wim tor id dill Mipediouryserful: no cof'l ealled on con.
+
+Lam, day?
+
+INLARS IVI:
+I kitrrostorgul laft harast:
+Is a:
+I do
+raep, IChe mar lawte kar heaor suy fhe son reantr,
+And the peeceriasun;
+Ungbaig's rLnot has ast sorsape to ftoret housilld,
+
+AOLAN YETTHINL:
+Shen rar ive miste tha...
+07-Feb-23 16:11:26 - INFO - <function clean_logs at 0x7f69465f13f0> called with args: (), kwargs: {}...
+07-Feb-23 16:17:32 - WARNING - ======= __main__ START =======
+07-Feb-23 16:17:32 - INFO - <function DataLoader.__init__ at 0x7f1971900040> called with args: (<__main__.DataLoader object at 0x7f19718d3ca0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:17:32 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:17:32 - INFO - <function VocabularyConfigurer.__init__ at 0x7f1971900310> called with args: (<__main__.VocabularyConfigurer object at 0x7f19718d3ca0>, 'char'), kwargs: {}...
+07-Feb-23 16:17:32 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f1971900430> called with args: (<__main__.VocabularyConfigurer object at 0x7f19718d3ca0>,), kwargs: {}...
+07-Feb-23 16:17:32 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:17:32 - INFO - <function Encoder.__init__ at 0x7f1971900550> called with args: (<__main__.Encoder object at 0x7f19718d3ca0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:17:32 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:17:32 - INFO - <function Trainer.__init__ at 0x7f1971900790> called with args: (<__main__.Trainer object at 0x7f19718d3ca0>,), kwargs: {}...
+07-Feb-23 16:17:32 - INFO - <built-in method seed of torch._C.Generator object at 0x7f19ebc83c10>: 7561
+07-Feb-23 16:17:32 - INFO - <function Trainer.train at 0x7f1971900a60> called with args: (<__main__.Trainer object at 0x7f19718d3ca0>,), kwargs: {}...
+07-Feb-23 16:17:32 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:17:32 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:17:33 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 16:17:33 - INFO - Loss: 4.432850360870361
+07-Feb-23 16:17:35 - INFO - Step 0: train loss 4.5246, val loss 4.5260
+07-Feb-23 16:17:42 - INFO - Step 1000: train loss 2.4362, val loss 2.4340
+07-Feb-23 16:17:49 - INFO - Step 2000: train loss 2.2464, val loss 2.2487
+07-Feb-23 16:17:56 - INFO - Step 3000: train loss 2.1611, val loss 2.1598
+07-Feb-23 16:18:03 - INFO - Step 4000: train loss 2.1182, val loss 2.1153
+07-Feb-23 16:18:10 - INFO - Step 5000: train loss 2.0849, val loss 2.0857
+07-Feb-23 16:18:17 - INFO - Step 6000: train loss 2.0555, val loss 2.0612
+07-Feb-23 16:18:23 - INFO - Step 7000: train loss 2.0372, val loss 2.0298
+07-Feb-23 16:18:30 - INFO - Step 8000: train loss 2.0108, val loss 2.0069
+07-Feb-23 16:18:37 - INFO - Step 9000: train loss 1.9996, val loss 2.0041
+07-Feb-23 16:18:44 - INFO - Step 10000: train loss 1.9790, val loss 1.9791
+07-Feb-23 16:18:51 - INFO - Step 11000: train loss 1.9781, val loss 1.9730
+07-Feb-23 16:18:58 - INFO - Step 12000: train loss 1.9706, val loss 1.9752
+07-Feb-23 16:19:05 - INFO - Step 13000: train loss 1.9517, val loss 1.9494
+07-Feb-23 16:19:11 - INFO - Step 14000: train loss 1.9600, val loss 1.9611
+07-Feb-23 16:19:18 - INFO - Step 15000: train loss 1.9433, val loss 1.9512
+07-Feb-23 16:19:25 - INFO - Step 16000: train loss 1.9510, val loss 1.9547
+07-Feb-23 16:19:32 - INFO - Step 17000: train loss 1.9220, val loss 1.9228
+07-Feb-23 16:19:35 - INFO - Finished training with loss 1.7353302240371704
+07-Feb-23 16:19:35 - INFO - <function Decoder.__init__ at 0x7f1971900670> called with args: (<__main__.Decoder object at 0x7f1971928340>, [0, 14, 33, 58, 10, 0, 35, 46, 43, 52, 1, 46, 39, 58, 46, 1, 58, 46, 43, 51, 1, 53, 52, 1, 52, 43, 43, 5, kwargs: {}...
+07-Feb-23 16:19:35 - INFO - Data decoded using char tokenization: 
+BUt:
+When hath them on neer reoth notes I have
+Thy have I midst exay for vensed:
+Vear ain cheent. Whis in makitious for foul: any elempues tollow
+I paredy a sounts astill of hig is you me humbuding a speet it that with or it, I, my quaint your blooke coffuld and beldes:
+And my days; I suny him gook'dl of our lies,
+My rott: Isway, his rue thee.
+
+ISABELLA:
+Baw heave such thou with of Cove, frompetching
+For of wail's revig has ast sor
+ape up, to tobusts, apust one my look.
+
+VOTull,
+Juild I have us...
+07-Feb-23 16:19:35 - INFO - <function clean_logs at 0x7f1971de53f0> called with args: (), kwargs: {}...
+07-Feb-23 16:25:54 - WARNING - ======= __main__ START =======
+07-Feb-23 16:25:54 - INFO - <function DataLoader.__init__ at 0x7f62b4f00040> called with args: (<__main__.DataLoader object at 0x7f62b50b7ac0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:25:54 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:25:54 - INFO - <function VocabularyConfigurer.__init__ at 0x7f62b4f00310> called with args: (<__main__.VocabularyConfigurer object at 0x7f62b50b7ac0>, 'char'), kwargs: {}...
+07-Feb-23 16:25:54 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f62b4f00430> called with args: (<__main__.VocabularyConfigurer object at 0x7f62b50b7ac0>,), kwargs: {}...
+07-Feb-23 16:25:54 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:25:54 - INFO - <function Encoder.__init__ at 0x7f62b4f00550> called with args: (<__main__.Encoder object at 0x7f62b50b7ac0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:25:54 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:25:54 - INFO - <function Trainer.__init__ at 0x7f62b4f00790> called with args: (<__main__.Trainer object at 0x7f62b50b7ac0>,), kwargs: {}...
+07-Feb-23 16:25:54 - INFO - <built-in method seed of torch._C.Generator object at 0x7f632f347c10>: 7561
+07-Feb-23 16:25:54 - INFO - <function Trainer.train at 0x7f62b4f00a60> called with args: (<__main__.Trainer object at 0x7f62b50b7ac0>,), kwargs: {}...
+07-Feb-23 16:25:55 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:25:55 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:25:55 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 16:25:55 - INFO - Loss: 4.405728816986084
+07-Feb-23 16:25:57 - INFO - Step 0: train loss 4.4906, val loss 4.4921
+07-Feb-23 16:26:05 - INFO - Step 1000: train loss 2.4584, val loss 2.4556
+07-Feb-23 16:26:13 - INFO - Step 2000: train loss 2.2867, val loss 2.2891
+07-Feb-23 16:26:20 - INFO - Step 3000: train loss 2.2086, val loss 2.2085
+07-Feb-23 16:26:27 - INFO - Step 4000: train loss 2.1433, val loss 2.1390
+07-Feb-23 16:26:35 - INFO - Step 5000: train loss 2.1292, val loss 2.1293
+07-Feb-23 16:26:42 - INFO - Step 6000: train loss 2.0879, val loss 2.0907
+07-Feb-23 16:26:50 - INFO - Step 7000: train loss 2.0665, val loss 2.0631
+07-Feb-23 16:26:57 - INFO - Step 8000: train loss 2.0461, val loss 2.0443
+07-Feb-23 16:27:05 - INFO - Step 9000: train loss 2.0364, val loss 2.0430
+07-Feb-23 16:27:12 - INFO - Step 10000: train loss 2.0237, val loss 2.0254
+07-Feb-23 16:27:20 - INFO - Step 11000: train loss 2.0046, val loss 1.9998
+07-Feb-23 16:27:27 - INFO - Step 12000: train loss 1.9989, val loss 2.0037
+07-Feb-23 16:27:34 - INFO - Step 13000: train loss 1.9843, val loss 1.9877
+07-Feb-23 16:27:42 - INFO - Step 14000: train loss 1.9791, val loss 1.9833
+07-Feb-23 16:27:49 - INFO - Step 15000: train loss 1.9686, val loss 1.9734
+07-Feb-23 16:27:57 - INFO - Step 16000: train loss 1.9688, val loss 1.9727
+07-Feb-23 16:28:04 - INFO - Step 17000: train loss 1.9602, val loss 1.9616
+07-Feb-23 16:28:07 - INFO - Finished training with loss 1.7244553565979004
+07-Feb-23 16:28:07 - INFO - <function Decoder.__init__ at 0x7f62b4f00670> called with args: (<__main__.Decoder object at 0x7f62b4f24790>, [0, 0, 18, 53, 56, 42, 1, 37, 27, 30, 23, 10, 0, 21, 5, 50, 50, 1, 52, 53, 58, 1, 39, 54, 54, 43, 56, 52, kwargs: {}...
+07-Feb-23 16:28:07 - INFO - Data decoded using char tokenization: 
+
+Ford YORK:
+I'll not appern reot; not igntherst;
+We be us mid noth as us vensed:
+Vo. Waitor elong they in making pivint; 'to in with mades then pospp they guboly,
+Dest is bun makin your to mean.
+Sepast yet it than fin oor it, I,
+Notherion your blooks rofe, eas I belles:
+Am, my day?
+
+IFRGIO:
+Ned you hop sitigng alford
+To sibes alausid
+Of Ricess he revew your where? any from your some,
+And you peectial untrow wain's revigh we as as
+To peance, when hothiled, thou a walk!
+To laws wrothing I hath ga...
+07-Feb-23 16:28:07 - INFO - <function clean_logs at 0x7f62b53ed3f0> called with args: (), kwargs: {}...
+07-Feb-23 16:36:58 - WARNING - ======= __main__ START =======
+07-Feb-23 16:36:58 - INFO - <function DataLoader.__init__ at 0x7f4704b040d0> called with args: (<__main__.DataLoader object at 0x7f4704ac3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:36:58 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:36:58 - INFO - <function VocabularyConfigurer.__init__ at 0x7f4704b043a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f4704ac3fa0>, 'char'), kwargs: {}...
+07-Feb-23 16:36:58 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f4704b044c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f4704ac3fa0>,), kwargs: {}...
+07-Feb-23 16:36:58 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:36:58 - INFO - <function Encoder.__init__ at 0x7f4704b045e0> called with args: (<__main__.Encoder object at 0x7f4704ac3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:36:58 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:36:58 - INFO - <function Trainer.__init__ at 0x7f4704b04820> called with args: (<__main__.Trainer object at 0x7f4704ac3fa0>,), kwargs: {}...
+07-Feb-23 16:36:58 - INFO - <built-in method seed of torch._C.Generator object at 0x7f477ee8bcd0>: 7561
+07-Feb-23 16:36:58 - INFO - <function Trainer.train at 0x7f4704b04af0> called with args: (<__main__.Trainer object at 0x7f4704ac3fa0>,), kwargs: {}...
+07-Feb-23 16:36:59 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:36:59 - INFO - Embedding table created: Embedding(65, 384) with vocabulary size 65
+07-Feb-23 16:36:59 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 16:36:59 - INFO - Loss: 4.590264797210693
+07-Feb-23 16:39:23 - INFO - Step 0: train loss 4.5611, val loss 4.5610
+07-Feb-23 16:39:23 - ERROR - Exception raised in train:
+CUDA out of memory. Tried to allocate 96.00 MiB (GPU 0; 7.78 GiB total capacity; 5.99 GiB already allocated; 174.12 MiB free; 6.04 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 295, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 388, in forward
+    x = x + self.ffwd(self.ln2(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 369, in forward
+    return self.net(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB (GPU 0; 7.78 GiB total capacity; 5.99 GiB already allocated; 174.12 MiB free; 6.04 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+07-Feb-23 16:43:00 - WARNING - ======= __main__ START =======
+07-Feb-23 16:43:00 - INFO - <function DataLoader.__init__ at 0x7fd7437fc0d0> called with args: (<__main__.DataLoader object at 0x7fd7439b7fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:43:00 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:43:00 - INFO - <function VocabularyConfigurer.__init__ at 0x7fd7437fc3a0> called with args: (<__main__.VocabularyConfigurer object at 0x7fd7439b7fa0>, 'char'), kwargs: {}...
+07-Feb-23 16:43:00 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7fd7437fc4c0> called with args: (<__main__.VocabularyConfigurer object at 0x7fd7439b7fa0>,), kwargs: {}...
+07-Feb-23 16:43:00 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:43:00 - INFO - <function Encoder.__init__ at 0x7fd7437fc5e0> called with args: (<__main__.Encoder object at 0x7fd7439b7fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:43:00 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:43:00 - INFO - <function Trainer.__init__ at 0x7fd7437fc820> called with args: (<__main__.Trainer object at 0x7fd7439b7fa0>,), kwargs: {}...
+07-Feb-23 16:43:00 - INFO - <built-in method seed of torch._C.Generator object at 0x7fd7bdc2fc70>: 7561
+07-Feb-23 16:43:00 - INFO - <function Trainer.train at 0x7fd7437fcaf0> called with args: (<__main__.Trainer object at 0x7fd7439b7fa0>,), kwargs: {}...
+07-Feb-23 16:43:01 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:43:01 - INFO - Embedding table created: Embedding(65, 128) with vocabulary size 65
+07-Feb-23 16:43:01 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (16384x126 and 128x128)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (16384x126 and 128x128)
+07-Feb-23 16:44:16 - WARNING - ======= __main__ START =======
+07-Feb-23 16:44:16 - INFO - <function DataLoader.__init__ at 0x7ff3988f40d0> called with args: (<__main__.DataLoader object at 0x7ff398aaffa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:44:16 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:44:16 - INFO - <function VocabularyConfigurer.__init__ at 0x7ff3988f43a0> called with args: (<__main__.VocabularyConfigurer object at 0x7ff398aaffa0>, 'char'), kwargs: {}...
+07-Feb-23 16:44:16 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7ff3988f44c0> called with args: (<__main__.VocabularyConfigurer object at 0x7ff398aaffa0>,), kwargs: {}...
+07-Feb-23 16:44:16 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:44:16 - INFO - <function Encoder.__init__ at 0x7ff3988f45e0> called with args: (<__main__.Encoder object at 0x7ff398aaffa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:44:16 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:44:16 - INFO - <function Trainer.__init__ at 0x7ff3988f4820> called with args: (<__main__.Trainer object at 0x7ff398aaffa0>,), kwargs: {}...
+07-Feb-23 16:44:16 - INFO - <built-in method seed of torch._C.Generator object at 0x7ff412d4fc70>: 7561
+07-Feb-23 16:44:16 - INFO - <function Trainer.train at 0x7ff3988f4af0> called with args: (<__main__.Trainer object at 0x7ff398aaffa0>,), kwargs: {}...
+07-Feb-23 16:44:17 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:44:17 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:44:17 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (16384x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (16384x30 and 32x32)
+07-Feb-23 16:44:52 - WARNING - ======= __main__ START =======
+07-Feb-23 16:44:52 - INFO - <function DataLoader.__init__ at 0x7f43ac6f40d0> called with args: (<__main__.DataLoader object at 0x7f43ac8affa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 16:44:52 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 16:44:52 - INFO - <function VocabularyConfigurer.__init__ at 0x7f43ac6f43a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f43ac8affa0>, 'char'), kwargs: {}...
+07-Feb-23 16:44:52 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f43ac6f44c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f43ac8affa0>,), kwargs: {}...
+07-Feb-23 16:44:52 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 16:44:52 - INFO - <function Encoder.__init__ at 0x7f43ac6f45e0> called with args: (<__main__.Encoder object at 0x7f43ac8affa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 16:44:52 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 16:44:52 - INFO - <function Trainer.__init__ at 0x7f43ac6f4820> called with args: (<__main__.Trainer object at 0x7f43ac8affa0>,), kwargs: {}...
+07-Feb-23 16:44:52 - INFO - <built-in method seed of torch._C.Generator object at 0x7f4426b4fc70>: 7561
+07-Feb-23 16:44:52 - INFO - <function Trainer.train at 0x7f43ac6f4af0> called with args: (<__main__.Trainer object at 0x7f43ac8affa0>,), kwargs: {}...
+07-Feb-23 16:44:52 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 16:44:52 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 16:44:53 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+07-Feb-23 17:31:12 - WARNING - ======= __main__ START =======
+07-Feb-23 17:31:12 - INFO - <function DataLoader.__init__ at 0x7f913eb000d0> called with args: (<__main__.DataLoader object at 0x7f913ecbbfa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:31:12 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:31:12 - INFO - <function VocabularyConfigurer.__init__ at 0x7f913eb003a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f913ecbbfa0>, 'char'), kwargs: {}...
+07-Feb-23 17:31:12 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f913eb004c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f913ecbbfa0>,), kwargs: {}...
+07-Feb-23 17:31:12 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:31:12 - INFO - <function Encoder.__init__ at 0x7f913eb005e0> called with args: (<__main__.Encoder object at 0x7f913ecbbfa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:31:12 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:31:12 - INFO - <function Trainer.__init__ at 0x7f913eb00820> called with args: (<__main__.Trainer object at 0x7f913ecbbfa0>,), kwargs: {}...
+07-Feb-23 17:31:12 - INFO - <built-in method seed of torch._C.Generator object at 0x7f91b8e87cd0>: 7561
+07-Feb-23 17:31:12 - INFO - <function Trainer.train at 0x7f913eb00af0> called with args: (<__main__.Trainer object at 0x7f913ecbbfa0>,), kwargs: {}...
+07-Feb-23 17:31:13 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:31:13 - INFO - Embedding table created: Embedding(65, 384) with vocabulary size 65
+07-Feb-23 17:31:13 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 17:31:13 - INFO - Loss: 4.590264797210693
+07-Feb-23 17:32:26 - INFO - Step 0: train loss 4.5609, val loss 4.5613
+07-Feb-23 17:32:26 - ERROR - Exception raised in train:
+CUDA out of memory. Tried to allocate 24.00 MiB (GPU 0; 7.78 GiB total capacity; 5.94 GiB already allocated; 136.38 MiB free; 6.00 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 295, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB (GPU 0; 7.78 GiB total capacity; 5.94 GiB already allocated; 136.38 MiB free; 6.00 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+07-Feb-23 17:34:19 - WARNING - ======= __main__ START =======
+07-Feb-23 17:34:19 - INFO - <function DataLoader.__init__ at 0x7f21a80f80d0> called with args: (<__main__.DataLoader object at 0x7f21a82b3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:34:19 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:34:19 - INFO - <function VocabularyConfigurer.__init__ at 0x7f21a80f83a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f21a82b3fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:34:19 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f21a80f84c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f21a82b3fa0>,), kwargs: {}...
+07-Feb-23 17:34:19 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:34:19 - INFO - <function Encoder.__init__ at 0x7f21a80f85e0> called with args: (<__main__.Encoder object at 0x7f21a82b3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:34:19 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:34:19 - INFO - <function Trainer.__init__ at 0x7f21a80f8820> called with args: (<__main__.Trainer object at 0x7f21a82b3fa0>,), kwargs: {}...
+07-Feb-23 17:34:19 - INFO - <built-in method seed of torch._C.Generator object at 0x7f22224fbcd0>: 7561
+07-Feb-23 17:34:19 - INFO - <function Trainer.train at 0x7f21a80f8af0> called with args: (<__main__.Trainer object at 0x7f21a82b3fa0>,), kwargs: {}...
+07-Feb-23 17:34:19 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:34:19 - INFO - Embedding table created: Embedding(65, 384) with vocabulary size 65
+07-Feb-23 17:34:20 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 17:34:20 - INFO - Loss: 4.7368998527526855
+07-Feb-23 17:36:01 - INFO - Step 0: train loss 4.6849, val loss 4.6846
+07-Feb-23 17:36:01 - ERROR - Exception raised in train:
+CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 7.78 GiB total capacity; 5.79 GiB already allocated; 150.88 MiB free; 5.98 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 295, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 388, in forward
+    x = x + self.ffwd(self.ln2(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 369, in forward
+    return self.net(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 48.00 MiB (GPU 0; 7.78 GiB total capacity; 5.79 GiB already allocated; 150.88 MiB free; 5.98 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+07-Feb-23 17:37:06 - WARNING - ======= __main__ START =======
+07-Feb-23 17:37:06 - INFO - <function DataLoader.__init__ at 0x7fc2144f8160> called with args: (<__main__.DataLoader object at 0x7fc2146b3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:37:06 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:37:06 - INFO - <function VocabularyConfigurer.__init__ at 0x7fc2144f8430> called with args: (<__main__.VocabularyConfigurer object at 0x7fc2146b3fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:37:06 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7fc2144f8550> called with args: (<__main__.VocabularyConfigurer object at 0x7fc2146b3fa0>,), kwargs: {}...
+07-Feb-23 17:37:06 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:37:06 - INFO - <function Encoder.__init__ at 0x7fc2144f8670> called with args: (<__main__.Encoder object at 0x7fc2146b3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:37:06 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:37:06 - INFO - <function Trainer.__init__ at 0x7fc2144f88b0> called with args: (<__main__.Trainer object at 0x7fc2146b3fa0>,), kwargs: {}...
+07-Feb-23 17:37:06 - INFO - <built-in method seed of torch._C.Generator object at 0x7fc28e983c70>: 7561
+07-Feb-23 17:37:06 - INFO - <function Trainer.train at 0x7fc2144f8b80> called with args: (<__main__.Trainer object at 0x7fc2146b3fa0>,), kwargs: {}...
+07-Feb-23 17:37:06 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:37:06 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:37:07 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+07-Feb-23 17:38:19 - WARNING - ======= __main__ START =======
+07-Feb-23 17:38:19 - INFO - <function DataLoader.__init__ at 0x7f456f1fc0d0> called with args: (<__main__.DataLoader object at 0x7f456f3b7fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:38:19 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:38:19 - INFO - <function VocabularyConfigurer.__init__ at 0x7f456f1fc3a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f456f3b7fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:38:19 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f456f1fc4c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f456f3b7fa0>,), kwargs: {}...
+07-Feb-23 17:38:19 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:38:19 - INFO - <function Encoder.__init__ at 0x7f456f1fc5e0> called with args: (<__main__.Encoder object at 0x7f456f3b7fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:38:19 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:38:19 - INFO - <function Trainer.__init__ at 0x7f456f1fc820> called with args: (<__main__.Trainer object at 0x7f456f3b7fa0>,), kwargs: {}...
+07-Feb-23 17:38:19 - INFO - <built-in method seed of torch._C.Generator object at 0x7f45e962fc70>: 7561
+07-Feb-23 17:38:19 - INFO - <function Trainer.train at 0x7f456f1fcaf0> called with args: (<__main__.Trainer object at 0x7f456f3b7fa0>,), kwargs: {}...
+07-Feb-23 17:38:20 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:38:20 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:38:20 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (9216x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (9216x30 and 32x32)
+07-Feb-23 17:38:54 - WARNING - ======= __main__ START =======
+07-Feb-23 17:38:54 - INFO - <function DataLoader.__init__ at 0x7f23d2bf4160> called with args: (<__main__.DataLoader object at 0x7f23d2daffa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:38:54 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:38:54 - INFO - <function VocabularyConfigurer.__init__ at 0x7f23d2bf4430> called with args: (<__main__.VocabularyConfigurer object at 0x7f23d2daffa0>, 'char'), kwargs: {}...
+07-Feb-23 17:38:54 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f23d2bf4550> called with args: (<__main__.VocabularyConfigurer object at 0x7f23d2daffa0>,), kwargs: {}...
+07-Feb-23 17:38:54 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:38:54 - INFO - <function Encoder.__init__ at 0x7f23d2bf4670> called with args: (<__main__.Encoder object at 0x7f23d2daffa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:38:54 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:38:54 - INFO - <function Trainer.__init__ at 0x7f23d2bf48b0> called with args: (<__main__.Trainer object at 0x7f23d2daffa0>,), kwargs: {}...
+07-Feb-23 17:38:54 - INFO - <built-in method seed of torch._C.Generator object at 0x7f244cff3c70>: 7561
+07-Feb-23 17:38:54 - INFO - <function Trainer.train at 0x7f23d2bf4b80> called with args: (<__main__.Trainer object at 0x7f23d2daffa0>,), kwargs: {}...
+07-Feb-23 17:38:55 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:38:55 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:38:55 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+07-Feb-23 17:39:47 - WARNING - ======= __main__ START =======
+07-Feb-23 17:39:47 - INFO - <function DataLoader.__init__ at 0x7f8ed87fc0d0> called with args: (<__main__.DataLoader object at 0x7f8ed89b7fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:39:47 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:39:47 - INFO - <function VocabularyConfigurer.__init__ at 0x7f8ed87fc3a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f8ed89b7fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:39:47 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f8ed87fc4c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f8ed89b7fa0>,), kwargs: {}...
+07-Feb-23 17:39:47 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:39:47 - INFO - <function Encoder.__init__ at 0x7f8ed87fc5e0> called with args: (<__main__.Encoder object at 0x7f8ed89b7fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:39:47 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:39:47 - INFO - <function Trainer.__init__ at 0x7f8ed87fc820> called with args: (<__main__.Trainer object at 0x7f8ed89b7fa0>,), kwargs: {}...
+07-Feb-23 17:39:47 - INFO - <built-in method seed of torch._C.Generator object at 0x7f8f52c13c70>: 7561
+07-Feb-23 17:39:47 - INFO - <function Trainer.train at 0x7f8ed87fcaf0> called with args: (<__main__.Trainer object at 0x7f8ed89b7fa0>,), kwargs: {}...
+07-Feb-23 17:39:47 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:39:47 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:39:48 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (272x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (272x30 and 32x32)
+07-Feb-23 17:40:01 - WARNING - ======= __main__ START =======
+07-Feb-23 17:40:01 - INFO - <function DataLoader.__init__ at 0x7f85e89fc160> called with args: (<__main__.DataLoader object at 0x7f85e8bb7fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:40:01 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:40:01 - INFO - <function VocabularyConfigurer.__init__ at 0x7f85e89fc430> called with args: (<__main__.VocabularyConfigurer object at 0x7f85e8bb7fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:40:01 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f85e89fc550> called with args: (<__main__.VocabularyConfigurer object at 0x7f85e8bb7fa0>,), kwargs: {}...
+07-Feb-23 17:40:01 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:40:01 - INFO - <function Encoder.__init__ at 0x7f85e89fc670> called with args: (<__main__.Encoder object at 0x7f85e8bb7fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:40:01 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:40:01 - INFO - <function Trainer.__init__ at 0x7f85e89fc8b0> called with args: (<__main__.Trainer object at 0x7f85e8bb7fa0>,), kwargs: {}...
+07-Feb-23 17:40:01 - INFO - <built-in method seed of torch._C.Generator object at 0x7f8662e13c70>: 7561
+07-Feb-23 17:40:01 - INFO - <function Trainer.train at 0x7f85e89fcb80> called with args: (<__main__.Trainer object at 0x7f85e8bb7fa0>,), kwargs: {}...
+07-Feb-23 17:40:02 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:40:02 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:40:02 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (320x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (320x30 and 32x32)
+07-Feb-23 17:40:32 - WARNING - ======= __main__ START =======
+07-Feb-23 17:40:32 - INFO - <function DataLoader.__init__ at 0x7f44da5f8160> called with args: (<__main__.DataLoader object at 0x7f44da7b3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:40:32 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:40:32 - INFO - <function VocabularyConfigurer.__init__ at 0x7f44da5f8430> called with args: (<__main__.VocabularyConfigurer object at 0x7f44da7b3fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:40:32 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f44da5f8550> called with args: (<__main__.VocabularyConfigurer object at 0x7f44da7b3fa0>,), kwargs: {}...
+07-Feb-23 17:40:32 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:40:32 - INFO - <function Encoder.__init__ at 0x7f44da5f8670> called with args: (<__main__.Encoder object at 0x7f44da7b3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:40:32 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:40:32 - INFO - <function Trainer.__init__ at 0x7f44da5f88b0> called with args: (<__main__.Trainer object at 0x7f44da7b3fa0>,), kwargs: {}...
+07-Feb-23 17:40:32 - INFO - <built-in method seed of torch._C.Generator object at 0x7f45549fbc70>: 7561
+07-Feb-23 17:40:32 - INFO - <function Trainer.train at 0x7f44da5f8b80> called with args: (<__main__.Trainer object at 0x7f44da7b3fa0>,), kwargs: {}...
+07-Feb-23 17:40:32 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:40:32 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:40:33 - ERROR - Exception raised in train:
+mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+Traceback (most recent call last):
+  File "shakespeare/modules/model.py", line 33, in wrapper
+    return func(*args, **kw)
+  File "shakespeare/modules/model.py", line 277, in train
+    logits, loss = self.m(xb, yb)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 425, in forward
+    x = self.blocks(x)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 387, in forward
+    x = x + self.sa(self.ln1(x))
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "shakespeare/modules/model.py", line 354, in forward
+    out = self.projection(out)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "virtualenvs/shakespeare-GVbhReMg/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (256x30 and 32x32)
+07-Feb-23 17:40:53 - WARNING - ======= __main__ START =======
+07-Feb-23 17:40:53 - INFO - <function DataLoader.__init__ at 0x7ff4c2d00160> called with args: (<__main__.DataLoader object at 0x7ff4c2ebbfa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:40:53 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:40:53 - INFO - <function VocabularyConfigurer.__init__ at 0x7ff4c2d00430> called with args: (<__main__.VocabularyConfigurer object at 0x7ff4c2ebbfa0>, 'char'), kwargs: {}...
+07-Feb-23 17:40:53 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7ff4c2d00550> called with args: (<__main__.VocabularyConfigurer object at 0x7ff4c2ebbfa0>,), kwargs: {}...
+07-Feb-23 17:40:53 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:40:53 - INFO - <function Encoder.__init__ at 0x7ff4c2d00670> called with args: (<__main__.Encoder object at 0x7ff4c2ebbfa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:40:53 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:40:53 - INFO - <function Trainer.__init__ at 0x7ff4c2d008b0> called with args: (<__main__.Trainer object at 0x7ff4c2ebbfa0>,), kwargs: {}...
+07-Feb-23 17:40:53 - INFO - <built-in method seed of torch._C.Generator object at 0x7ff53d087c70>: 7561
+07-Feb-23 17:40:53 - INFO - <function Trainer.train at 0x7ff4c2d00b80> called with args: (<__main__.Trainer object at 0x7ff4c2ebbfa0>,), kwargs: {}...
+07-Feb-23 17:40:54 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:40:54 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:40:54 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 17:40:54 - INFO - Loss: 4.762600421905518
+07-Feb-23 17:40:59 - INFO - Step 0: train loss 4.7090, val loss 4.7090
+07-Feb-23 17:41:14 - INFO - Step 500: train loss 2.5157, val loss 2.5222
+07-Feb-23 17:41:30 - INFO - Step 1000: train loss 2.4081, val loss 2.4138
+07-Feb-23 17:41:46 - INFO - Step 1500: train loss 2.3609, val loss 2.3590
+07-Feb-23 17:42:02 - INFO - Step 2000: train loss 2.2957, val loss 2.2945
+07-Feb-23 17:42:19 - INFO - Step 2500: train loss 2.2623, val loss 2.2678
+07-Feb-23 17:42:35 - INFO - Step 3000: train loss 2.2115, val loss 2.2089
+07-Feb-23 17:42:52 - INFO - Step 3500: train loss 2.1777, val loss 2.1896
+07-Feb-23 17:43:08 - INFO - Step 4000: train loss 2.1376, val loss 2.1445
+07-Feb-23 17:43:25 - INFO - Step 4500: train loss 2.1179, val loss 2.1186
+07-Feb-23 17:43:37 - INFO - Finished training with loss 2.226496458053589
+07-Feb-23 17:43:40 - INFO - <function Decoder.__init__ at 0x7ff4c2d00790> called with args: (<__main__.Decoder object at 0x7ff4bc1612a0>, [0, 17, 42, 1, 58, 53, 1, 39, 0, 30, 21, 26, 15, 30, 16, 33, 26, 27, 10, 0, 21, 1, 46, 39, 52, 1, 58, 46, kwargs: {}...
+07-Feb-23 17:43:40 - INFO - Data decoded using char tokenization: 
+Ed to a
+RINCRDUNO:
+I han the preathot; Lons
+Theath my, What waill migns allo, wing it shime
+Sme mish, ong hemaser dhand I a gue
+iearst thim, this tnot ond Gonk!
+Yord sigfff theing shat ruscere shisir.
+Gound fomp for your mort amenn your cairf do foe mentnot
+to it o cowscl!
+OLard KaSow conUUTH:
+Ry Sive alat o dno mothn theery Leage bant,
+Poce Roouly: vensainsters gray:
+
+my so
+Be SEaor, ye son on cair! 'THys Bo's oure,
+Inw ir show Cay, noy do tem wich meenpy ming,
+Yom ofen allieng bay hy mawes a ...
+07-Feb-23 17:43:40 - INFO - <function clean_logs at 0x7ff4c31f1510> called with args: (), kwargs: {}...
+07-Feb-23 17:48:22 - WARNING - ======= __main__ START =======
+07-Feb-23 17:48:22 - INFO - <function DataLoader.__init__ at 0x7f5b71100160> called with args: (<__main__.DataLoader object at 0x7f5b712bbfa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:48:22 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:48:22 - INFO - <function VocabularyConfigurer.__init__ at 0x7f5b71100430> called with args: (<__main__.VocabularyConfigurer object at 0x7f5b712bbfa0>, 'char'), kwargs: {}...
+07-Feb-23 17:48:22 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f5b71100550> called with args: (<__main__.VocabularyConfigurer object at 0x7f5b712bbfa0>,), kwargs: {}...
+07-Feb-23 17:48:22 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:48:22 - INFO - <function Encoder.__init__ at 0x7f5b71100670> called with args: (<__main__.Encoder object at 0x7f5b712bbfa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:48:22 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:48:22 - INFO - <function Trainer.__init__ at 0x7f5b711008b0> called with args: (<__main__.Trainer object at 0x7f5b712bbfa0>,), kwargs: {}...
+07-Feb-23 17:48:22 - INFO - <built-in method seed of torch._C.Generator object at 0x7f5beb58bc70>: 7561
+07-Feb-23 17:48:22 - INFO - <function Trainer.train at 0x7f5b71100b80> called with args: (<__main__.Trainer object at 0x7f5b712bbfa0>,), kwargs: {}...
+07-Feb-23 17:48:22 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:48:22 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:48:23 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 17:48:23 - INFO - Loss: 4.701117515563965
+07-Feb-23 17:48:29 - INFO - Step 0: train loss 4.6581, val loss 4.6571
+07-Feb-23 17:48:52 - INFO - Step 500: train loss 2.5325, val loss 2.5348
+07-Feb-23 17:49:15 - INFO - Step 1000: train loss 2.4798, val loss 2.4805
+07-Feb-23 17:49:38 - INFO - Step 1500: train loss 2.4283, val loss 2.4262
+07-Feb-23 17:50:01 - INFO - Step 2000: train loss 2.3517, val loss 2.3504
+07-Feb-23 17:50:24 - INFO - Step 2500: train loss 2.2775, val loss 2.2767
+07-Feb-23 17:50:47 - INFO - Step 3000: train loss 2.2171, val loss 2.2198
+07-Feb-23 17:51:09 - INFO - Step 3500: train loss 2.1598, val loss 2.1583
+07-Feb-23 17:51:32 - INFO - Step 4000: train loss 2.1140, val loss 2.1132
+07-Feb-23 17:51:55 - INFO - Step 4500: train loss 2.0601, val loss 2.0610
+07-Feb-23 17:52:12 - INFO - Finished training with loss 2.0535638332366943
+07-Feb-23 17:52:15 - INFO - <function Decoder.__init__ at 0x7f5b71100790> called with args: (<__main__.Decoder object at 0x7f5b6a5612a0>, [0, 47, 42, 1, 57, 53, 12, 0, 0, 34, 39, 56, 49, 43, 39, 52, 41, 46, 6, 1, 44, 47, 39, 56, 6, 1, 58, 46,, kwargs: {}...
+07-Feb-23 17:52:15 - INFO - Data decoded using char tokenization: 
+id so?
+
+Varkeanch, fiar, the my thee dercrolftst o he's maste,
+Thent I cilpp aclom up thraing putst.
+
+MENENAS:
+Of me carllioung!
+
+POLINIENAN:
+Wes wire set lavetes adee o leveace't!
+
+Say, you me and bet connmeriong me dirirbe;
+Withen.
+
+
+KINGE IG YRKARETE:
+
+GRay:
+Mowely!
+
+Fae YIZAR:
+Nopio. meaice live-
+I you you fall beatelfom kind shancce
+To us he worss guveacie. Fir flet with, mut a hoversior
+Rachiove's win the is the frial, as yomst.
+
+MESTALO:
+I there mene, becht for liors, tand to to sulll bu...
+07-Feb-23 17:52:15 - INFO - <function clean_logs at 0x7f5b715f1510> called with args: (), kwargs: {}...
+07-Feb-23 17:52:37 - WARNING - ======= __main__ START =======
+07-Feb-23 17:52:37 - INFO - <function DataLoader.__init__ at 0x7f02399f8160> called with args: (<__main__.DataLoader object at 0x7f0239bb3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 17:52:37 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 17:52:37 - INFO - <function VocabularyConfigurer.__init__ at 0x7f02399f8430> called with args: (<__main__.VocabularyConfigurer object at 0x7f0239bb3fa0>, 'char'), kwargs: {}...
+07-Feb-23 17:52:37 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f02399f8550> called with args: (<__main__.VocabularyConfigurer object at 0x7f0239bb3fa0>,), kwargs: {}...
+07-Feb-23 17:52:37 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 17:52:37 - INFO - <function Encoder.__init__ at 0x7f02399f8670> called with args: (<__main__.Encoder object at 0x7f0239bb3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 17:52:37 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 17:52:37 - INFO - <function Trainer.__init__ at 0x7f02399f88b0> called with args: (<__main__.Trainer object at 0x7f0239bb3fa0>,), kwargs: {}...
+07-Feb-23 17:52:37 - INFO - <built-in method seed of torch._C.Generator object at 0x7f02b3e2bc70>: 7561
+07-Feb-23 17:52:37 - INFO - <function Trainer.train at 0x7f02399f8b80> called with args: (<__main__.Trainer object at 0x7f0239bb3fa0>,), kwargs: {}...
+07-Feb-23 17:52:38 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 17:52:38 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 17:52:38 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 17:52:38 - INFO - Loss: 4.701117515563965
+07-Feb-23 17:52:45 - INFO - Step 0: train loss 4.6581, val loss 4.6571
+07-Feb-23 17:53:08 - INFO - Step 500: train loss 2.5325, val loss 2.5348
+07-Feb-23 17:53:31 - INFO - Step 1000: train loss 2.4798, val loss 2.4805
+07-Feb-23 17:53:54 - INFO - Step 1500: train loss 2.4283, val loss 2.4262
+07-Feb-23 17:54:17 - INFO - Step 2000: train loss 2.3517, val loss 2.3504
+07-Feb-23 17:54:40 - INFO - Step 2500: train loss 2.2775, val loss 2.2767
+07-Feb-23 17:55:02 - INFO - Step 3000: train loss 2.2171, val loss 2.2198
+07-Feb-23 17:55:25 - INFO - Step 3500: train loss 2.1598, val loss 2.1583
+07-Feb-23 17:55:48 - INFO - Step 4000: train loss 2.1140, val loss 2.1132
+07-Feb-23 17:56:11 - INFO - Step 4500: train loss 2.0601, val loss 2.0610
+07-Feb-23 17:56:34 - INFO - Step 5000: train loss 2.0397, val loss 2.0400
+07-Feb-23 17:56:57 - INFO - Step 5500: train loss 2.0196, val loss 2.0191
+07-Feb-23 17:57:20 - INFO - Step 6000: train loss 1.9864, val loss 1.9873
+07-Feb-23 17:57:42 - INFO - Step 6500: train loss 1.9603, val loss 1.9622
+07-Feb-23 17:58:05 - INFO - Step 7000: train loss 1.9539, val loss 1.9498
+07-Feb-23 17:58:28 - INFO - Step 7500: train loss 1.9346, val loss 1.9339
+07-Feb-23 17:58:51 - INFO - Step 8000: train loss 1.9222, val loss 1.9215
+07-Feb-23 17:59:14 - INFO - Step 8500: train loss 1.9051, val loss 1.9049
+07-Feb-23 17:59:37 - INFO - Step 9000: train loss 1.8974, val loss 1.8999
+07-Feb-23 18:00:00 - INFO - Step 9500: train loss 1.8899, val loss 1.8922
+07-Feb-23 18:00:23 - INFO - Step 10000: train loss 1.8883, val loss 1.8893
+07-Feb-23 18:00:45 - INFO - Step 10500: train loss 1.8651, val loss 1.8647
+07-Feb-23 18:01:08 - INFO - Step 11000: train loss 1.8762, val loss 1.8790
+07-Feb-23 18:01:31 - INFO - Step 11500: train loss 1.8612, val loss 1.8638
+07-Feb-23 18:01:54 - INFO - Step 12000: train loss 1.8555, val loss 1.8556
+07-Feb-23 18:02:17 - INFO - Step 12500: train loss 1.8459, val loss 1.8498
+07-Feb-23 18:02:40 - INFO - Step 13000: train loss 1.8418, val loss 1.8428
+07-Feb-23 18:03:03 - INFO - Step 13500: train loss 1.8390, val loss 1.8394
+07-Feb-23 18:03:26 - INFO - Step 14000: train loss 1.8494, val loss 1.8501
+07-Feb-23 18:03:49 - INFO - Step 14500: train loss 1.8316, val loss 1.8322
+07-Feb-23 18:04:11 - INFO - Step 15000: train loss 1.8294, val loss 1.8240
+07-Feb-23 18:04:35 - INFO - Step 15500: train loss 1.8204, val loss 1.8187
+07-Feb-23 18:04:59 - INFO - Step 16000: train loss 1.8204, val loss 1.8178
+07-Feb-23 18:05:22 - INFO - Step 16500: train loss 1.8154, val loss 1.8239
+07-Feb-23 18:05:46 - INFO - Step 17000: train loss 1.8206, val loss 1.8184
+07-Feb-23 18:06:10 - INFO - Step 17500: train loss 1.8124, val loss 1.8076
+07-Feb-23 18:06:33 - INFO - Step 18000: train loss 1.8139, val loss 1.8049
+07-Feb-23 18:06:57 - INFO - Step 18500: train loss 1.8041, val loss 1.8033
+07-Feb-23 18:07:20 - INFO - Step 19000: train loss 1.7957, val loss 1.7980
+07-Feb-23 18:07:44 - INFO - Step 19500: train loss 1.8053, val loss 1.8056
+07-Feb-23 18:08:01 - INFO - Finished training with loss 1.7203454971313477
+07-Feb-23 18:08:04 - INFO - <function Decoder.__init__ at 0x7f02399f8790> called with args: (<__main__.Decoder object at 0x7f0239ab52a0>, [0, 37, 53, 59, 57, 0, 13, 57, 47, 50, 57, 1, 44, 53, 53, 56, 1, 58, 39, 49, 43, 1, 53, 59, 56, 1, 39, 5, kwargs: {}...
+07-Feb-23 18:08:04 - INFO - Data decoded using char tokenization: 
+Yous
+Asils foor take our as serverd, of death tostore:
+Elow, where so blow a thee in valos hisshe
+he Comeilceance, libusion, blood his lord vercunt;
+The irrnow here your lope Megaveren,
+Wererey, what your read compata, teer, they,
+Treeds take
+To strupagen seet; thou, a stoct with him
+And a for.
+
+Frought Lone Yet faters, bessu'd hidher give
+Your me altest: I'll cappeatre, I'll nor here absue swea!
+Bes by signe alht not is o' oa mack.
+
+MARTARGUS:
+TVo na your clow one, the tarltes,
+Whot do fla dog...
+07-Feb-23 18:08:04 - INFO - <function clean_logs at 0x7f0239ee9510> called with args: (), kwargs: {}...
+07-Feb-23 18:08:30 - WARNING - ======= __main__ START =======
+07-Feb-23 18:08:30 - INFO - <function DataLoader.__init__ at 0x7f89971f80d0> called with args: (<__main__.DataLoader object at 0x7f89973b3fa0>,), kwargs: {'data': 'tiny'}...
+07-Feb-23 18:08:30 - INFO - Data loaded from <_io.TextIOWrapper name='../data/tinyshakespeare.txt' mode='r' encoding='utf-8-sig'>...
+07-Feb-23 18:08:30 - INFO - <function VocabularyConfigurer.__init__ at 0x7f89971f83a0> called with args: (<__main__.VocabularyConfigurer object at 0x7f89973b3fa0>, 'char'), kwargs: {}...
+07-Feb-23 18:08:30 - INFO - <function VocabularyConfigurer._create_vocabulary at 0x7f89971f84c0> called with args: (<__main__.VocabularyConfigurer object at 0x7f89973b3fa0>,), kwargs: {}...
+07-Feb-23 18:08:30 - INFO - Vocabulary created: ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
+07-Feb-23 18:08:30 - INFO - <function Encoder.__init__ at 0x7f89971f85e0> called with args: (<__main__.Encoder object at 0x7f89973b3fa0>, "First Citizen:\nBefore we proceed any further, hear me speak.\n\nAll:\nSpeak, speak.\n\nFirst Citizen:\, kwargs: {}...
+07-Feb-23 18:08:30 - INFO - Data encoded using char tokenization: [18, 47, 56, 57, 58, 1, 15, 47, 58, 47, 64, 43, 52, 10, 0, 14, 43, 44, 53, 56, 43, 1, 61, 43, 1, 54, 56, 53, 41, 43, 43, 42, 1, 39, 52, 63, 1, 44, 59, 56, 58, 46, 43, 56, 6, 1, 46, 43, 39, 56]...
+07-Feb-23 18:08:30 - INFO - <function Trainer.__init__ at 0x7f89971f8820> called with args: (<__main__.Trainer object at 0x7f89973b3fa0>,), kwargs: {}...
+07-Feb-23 18:08:30 - INFO - <built-in method seed of torch._C.Generator object at 0x7f8a115f7c70>: 7561
+07-Feb-23 18:08:30 - INFO - <function Trainer.train at 0x7f89971f8af0> called with args: (<__main__.Trainer object at 0x7f89973b3fa0>,), kwargs: {}...
+07-Feb-23 18:08:30 - INFO - Initializing BigramLanguageModel...
+07-Feb-23 18:08:30 - INFO - Embedding table created: Embedding(65, 32) with vocabulary size 65
+07-Feb-23 18:08:31 - INFO - Idealized loss: 4.174387269895637
+07-Feb-23 18:08:31 - INFO - Loss: 4.714758396148682
+07-Feb-23 18:09:12 - INFO - Step 0: train loss 4.6970, val loss 4.6967
+07-Feb-23 18:10:59 - INFO - Step 500: train loss 2.4784, val loss 2.4795
+07-Feb-23 18:12:46 - INFO - Step 1000: train loss 2.3535, val loss 2.3537
+07-Feb-23 18:14:34 - INFO - Step 1500: train loss 2.2091, val loss 2.2087
+07-Feb-23 18:16:21 - INFO - Step 2000: train loss 2.1060, val loss 2.1062
+07-Feb-23 18:18:09 - INFO - Step 2500: train loss 2.0185, val loss 2.0175
+07-Feb-23 18:19:57 - INFO - Step 3000: train loss 1.9692, val loss 1.9691
+07-Feb-23 18:21:45 - INFO - Step 3500: train loss 1.9336, val loss 1.9342
+07-Feb-23 18:23:31 - INFO - Step 4000: train loss 1.9046, val loss 1.9068
+07-Feb-23 18:25:19 - INFO - Step 4500: train loss 1.8900, val loss 1.8883
+07-Feb-23 18:27:07 - INFO - Step 5000: train loss 1.8655, val loss 1.8647
+07-Feb-23 18:28:54 - INFO - Step 5500: train loss 1.8606, val loss 1.8606
+07-Feb-23 18:30:42 - INFO - Step 6000: train loss 1.8465, val loss 1.8452
+07-Feb-23 18:32:30 - INFO - Step 6500: train loss 1.8309, val loss 1.8304
+07-Feb-23 18:34:18 - INFO - Step 7000: train loss 1.8207, val loss 1.8221
+07-Feb-23 18:36:06 - INFO - Step 7500: train loss 1.8248, val loss 1.8240
+07-Feb-23 18:37:54 - INFO - Step 8000: train loss 1.8115, val loss 1.8102
+07-Feb-23 18:39:41 - INFO - Step 8500: train loss 1.8055, val loss 1.8042
+07-Feb-23 18:41:28 - INFO - Step 9000: train loss 1.7934, val loss 1.7963
+07-Feb-23 18:43:16 - INFO - Step 9500: train loss 1.7906, val loss 1.7907
+07-Feb-23 18:45:04 - INFO - Step 10000: train loss 1.7833, val loss 1.7824
+07-Feb-23 18:46:51 - INFO - Step 10500: train loss 1.7762, val loss 1.7782
+07-Feb-23 18:48:39 - INFO - Step 11000: train loss 1.7715, val loss 1.7700
+07-Feb-23 18:50:26 - INFO - Step 11500: train loss 1.7676, val loss 1.7686
+07-Feb-23 18:52:14 - INFO - Step 12000: train loss 1.7681, val loss 1.7696
+07-Feb-23 18:54:01 - INFO - Step 12500: train loss 1.7651, val loss 1.7652
+07-Feb-23 18:55:48 - INFO - Step 13000: train loss 1.7649, val loss 1.7628
+07-Feb-23 18:57:36 - INFO - Step 13500: train loss 1.7557, val loss 1.7563
+07-Feb-23 18:59:23 - INFO - Step 14000: train loss 1.7523, val loss 1.7530
+07-Feb-23 19:01:11 - INFO - Step 14500: train loss 1.7472, val loss 1.7465
+07-Feb-23 19:02:58 - INFO - Step 15000: train loss 1.7531, val loss 1.7537
+07-Feb-23 19:04:45 - INFO - Step 15500: train loss 1.7449, val loss 1.7476
+07-Feb-23 19:06:33 - INFO - Step 16000: train loss 1.7448, val loss 1.7436
+07-Feb-23 19:08:20 - INFO - Step 16500: train loss 1.7346, val loss 1.7352
+07-Feb-23 19:10:07 - INFO - Step 17000: train loss 1.7336, val loss 1.7355
+07-Feb-23 19:11:55 - INFO - Step 17500: train loss 1.7298, val loss 1.7291
+07-Feb-23 19:13:42 - INFO - Step 18000: train loss 1.7343, val loss 1.7343
+07-Feb-23 19:15:29 - INFO - Step 18500: train loss 1.7269, val loss 1.7307
+07-Feb-23 19:17:16 - INFO - Step 19000: train loss 1.7260, val loss 1.7255
+07-Feb-23 19:19:00 - INFO - Step 19500: train loss 1.7208, val loss 1.7192
+07-Feb-23 19:20:07 - INFO - Finished training with loss 1.609885573387146
+07-Feb-23 19:20:10 - INFO - <function Decoder.__init__ at 0x7f89971f8700> called with args: (<__main__.Decoder object at 0x7f89972b52d0>, [0, 63, 43, 57, 57, 1, 58, 46, 53, 59, 1, 57, 39, 63, 1, 39, 50, 50, 6, 1, 42, 56, 43, 39, 60, 43, 58, 5, kwargs: {}...
+07-Feb-23 19:20:10 - INFO - Data decoded using char tokenization: 
+yess thou say all, dreavets woult that evar
+Dother?
+
+PRUMINA:
+It put, this alaster, I am my fow you?
+
+KING EDWARD IV:
+O matas of her, and Jeceral: you be will,
+Who him ilkli; our his friendmet, theseed, Which is Edcose;
+Instinor so a fit Batily hese; and Reeming hou'd
+Like not the my shallow, Wopphy a me yet
+I gate worry all gor of shalke us.
+
+Lesk RIVIARD I Sembalin:
+And by Verences, ro but speak her with event.
+Noop, thou, say with but too can I part lives!
+And it the flape then se stripow an...
+07-Feb-23 19:20:10 - INFO - <function clean_logs at 0x7f89976e9480> called with args: (), kwargs: {}...

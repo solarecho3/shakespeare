@@ -141,21 +141,22 @@ word tokenization = 76175
     	This was our generation:
 	
 	07-Feb-23 19:20:10 - INFO - Data decoded using char tokenization: 
-	yess thou say all, dreavets woult that evar
-	Dother?
+	
+		yess thou say all, dreavets woult that evar
+		Dother?
 
-	PRUMINA:
-	It put, this alaster, I am my fow you?
+		PRUMINA:
+		It put, this alaster, I am my fow you?
 
-	KING EDWARD IV:
-	O matas of her, and Jeceral: you be will,
-	Who him ilkli; our his friendmet, theseed, Which is Edcose;
-	Instinor so a fit Batily hese; and Reeming hou'd
-	Like not the my shallow, Wopphy a me yet
-	I gate worry all gor of shalke us.
+		KING EDWARD IV:
+		O matas of her, and Jeceral: you be will,
+		Who him ilkli; our his friendmet, theseed, Which is Edcose;
+		Instinor so a fit Batily hese; and Reeming hou'd
+		Like not the my shallow, Wopphy a me yet
+		I gate worry all gor of shalke us.
 
-	Lesk RIVIARD I Sembalin:
-	And by Verences, ro but speak her with event.
-	Noop, thou, say with but too can I part lives!
-	And it the flape then se stripow an...
+		Lesk RIVIARD I Sembalin:
+		And by Verences, ro but speak her with event.
+		Noop, thou, say with but too can I part lives!
+		And it the flape then se stripow an...
 	

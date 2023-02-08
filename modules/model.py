@@ -57,24 +57,24 @@ class Data:
     This prevents making one thread of all classes the model.
     """
 
-    data: DataLoader.dataset
-    data_configurations: DataLoader.__init__
+    data:                   DataLoader.dataset
+    data_configurations:    DataLoader.__init__
     
-    vocabulary: VocabularyConfigurer.create_vocabulary
-    vocabulary_type: VocabularyConfigurer.__init__
-    vocabulary_size: VocabularyConfigurer.create_vocabulary
+    vocabulary:             VocabularyConfigurer.create_vocabulary
+    vocabulary_type:        VocabularyConfigurer.__init__
+    vocabulary_size:        VocabularyConfigurer.create_vocabulary
     
-    encoded_data: Encoder.__init__
-    decoded_data: Decoder.__init__
+    encoded_data:           Encoder.__init__
+    decoded_data:           Decoder.__init__
     
-    trng_pivot: Trainer.__init__
-    training_data: Trainer.__init__
-    validation_data: Trainer.__init__
+    trng_pivot:             Trainer.__init__
+    training_data:          Trainer.__init__
+    validation_data:        Trainer.__init__
 
-    model: BigramLanguageModel.__init__
-    optimizer: Trainer.train
-    generation: Trainer.train
-    token_embedding_table: BigramLanguageModel.__init__
+    model:                  BigramLanguageModel.__init__
+    optimizer:              Trainer.train
+    generation:             Trainer.train
+    token_embedding_table:  BigramLanguageModel.__init__
 
 class DataLoader:
 
@@ -104,6 +104,10 @@ class DataLoader:
                 raise KeyError('DataLoader constructor called with improper arguments.')
     @logger
     def validate_schema(self):
+        """
+        ETL the data.
+        """
+        
         ...
 
 class VocabularyConfigurer:
@@ -280,7 +284,8 @@ class Trainer:
 
         # start optimization
         # TODO decouple this, move to function or module
-        optimizer = torch.optim.AdamW(self.m.parameters(), lr=1e-3)
+        # optimizer = torch.optim.AdamW(self.m.parameters(), lr=1e-3)
+        optimizer = torch.optim.AdamW(self.m.parameters(), lr=HyperParams.learning_rate)
 
         for iteration in range(HyperParams.max_iterations):
 

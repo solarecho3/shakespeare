@@ -123,7 +123,7 @@ word tokenization = 76175
 	
 - 7 Feb 23. adam. completing the model, optimizing for scale, hardware constraints.
 
-	We've reached our hardware limit on personal machines without some very clever optimization. At writing this is our hyper parameters:
+	We've reached our hardware limit on personal machines without some very clever optimization. At writing there are our hyper parameters:
 	
 	    - device = 'cuda' if torch.cuda.is_available() else 'cpu'
 	    - max_iterations = 20_000

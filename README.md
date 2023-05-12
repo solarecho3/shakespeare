@@ -10,6 +10,87 @@ To produce a GPT, trained on all shakespeare, that is queriable in plain English
 
 The goal of this research is  to provide a practical implementation of GPT3 that meets the desired end state of the customer.  The result of the research will be a GPT, trained on all Shakespeare's writing that will allow the user to ask plain text questions such as "Describe the character Henry the Fifth.", with a coherent answer such as "Henry the Fifth was King of England and fought in the Battle of Agincourt." The query returned will be a timely, accurate, and truthful response that answers the intent of the users query.  Accurate answers are the paramount priority of the tool.  Answers to queries will  be returned with a relative probability  (between zero (0) and one (1) with one  being 100% accurate) that the returned answer is correct.  
 
+## narrative 
+
+        Fall to thy prayers. This statement is taken from the William Shakespeare
+        play Henry the Fifth, in which King Henry disavows the knight Sir John Falstaff.
+        Considered by itself, the statement to "Fall to thy prayers..." can be taken as an ominous
+        directive implying some sort of threat. We could imagine a despot
+        or tyrant telling his enemies to Fall to their prayers before he
+        slaughters them. It inspires this imagery because of the encoding
+        I apply to it based on my own experiences, preferences, and inclinations.
+        However, when taken in the context of the play Henry the Fifth,
+        we see Henry is essentially telling Falstaff to fall to his prayers
+        because he has been disowned. He should fall to his prayers because
+        we, the audience, know Falstaff to be an avid sinner. Henry is sealing
+        Falstaff's fate and thus, his desolation. We derive this encoding from
+        Shakespeare's body of work, including other plays. The body of Shakespeare's
+        plays in which either Henry the Fifth or John Falstaff appear provides
+        the context we require to understand Henry's directive.
+        We expanded our context from the statement alone, to the statement in relation
+        to Henry and Falstaff's other interactions of which we are aware.
+        This is how human language is encoded. So, how does a computer which
+        processes digital signals understand the difference between the encoding
+        I applied to the statement, and the encoding Shakespeare intended.
+        In fact, as an aside, how can we even be sure we completely understand
+        the encoding Shakespeare intended? The answer is context.
+
+        So, how would you, dear listener, seek to understand this statement?
+        You would probably read the play, watch a stage performance, or read
+        a critical essay. In fact, you'd be best served to do all three, thus
+        expanding your context and building the encoding required to decode
+        the intent behind this sentence. The computer is no different. We must
+        find a way to allow the computer to understand this statement, but
+        critically, in context with other statements. In fact, we can leverage
+        the power of current computing to build a large contextual understanding.
+
+        First, we have to transform the text which humans can read, into numbers
+        which the computer can use. Humans use a complex and poorly-understood
+        combination of logic, emotion, and memory to build context, and each of us
+        applies our own gradient of these mental properties. What exactly that
+        combination of properties that forms a mental state is varies from person
+        to person. The computer, however, performs sets of instructions which
+        usually involve either moving signals around between components, or doing
+        calculations. So how does an inorganic machine gain context to interpret
+        the encoding of human speech? Well, we only have one option: we have to
+        compute the relationships between the components of human speech mathematically.
+
+        First, we begin by exposing the invisible symbols the computer uses to make
+        the text legible to us. For instance, the last two characters, a backslash and the
+        letter "n", are essentially an instruction to the computer to start a new line when
+        it encounters this combination. Now, let's isolate just one word, "Fall".
+
+        Next, we transform the symbols that comprise human language into
+        numbers, a process also called encoding. Interestingly, this version of encoding
+        is slightly different from the encoding we described earlier, but you probably
+        knew what I meant because of the context. For numbers, we use integers, which
+        implies only zeros after the decimal place, known in math as whole numbers.
+        Next, we choose unique integers to represent our letters. The numbers we choose
+        can be arbitrary, or we can be clever and choose numbers which are attractive
+        computationally, but let's ignore that for now. In this case, we've chosen the integers
+        18, 39, and 50. Now that we've converted our letters to numbers, we can say they
+        have a basic encoding. In order to carry these numbers through sets of computations,
+        we place them into a computer data structure called an array, which can be thought of
+        as a 1-dimensional matrix, a vector, or simply a named collection of values stored in
+        contiguous computer memory. Now, let's place our encoded letters back into the context
+        of the sentence, Fall to thy prayers. Note the last 4 values: 8, 8, 8, 0. We've also
+        included the encoded version of a period, and the newline character. We do this
+        because punctuation in human language is a form of encoding that describes how
+        we should interpret the text. A comma might separate statements syntactically or
+        signal a vocal pause if the text is meant to be read aloud.
+
+        Now, let's view the original human-legible text, encoded into english letters.
+        There's our word, "Fall", in the context of the play. Now, let's encode these three
+        lines, including all the punctuation and hidden characters like newlines and spaces,
+        into integers. If you were to deeply consider the integer-encoded text in this way
+        you might realize that our original simple encoding won't unlock the computer's
+        ability to interpret the speech because our encoding lacks spatial awareness.
+        It lacks context. Each letter appears in other places, in other words.
+        The letter "l" appears 7 times. The computer doesn't inherently understand the
+        difference between the appearance of the letter "l" in the word "fall", to the
+        letter "l" in the name Falstaff. Each of these letters, and indeed each instance
+        of each letter must carry its own encoding.
+
 ## method
 
 The first step will be to design a deep reinforcement learning with human feedback (RLHF) system, the aim of which is to design a reward function. That reward function will then be used to optimize to reward function of more traditional unsupervised reinforcement learning models.

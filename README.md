@@ -1,3 +1,7 @@
+ala andrej karpathy's nanogpt
+
+modules/model.py
+
 ## development notes
 - 25 Jan 23. adam. initializing the repository, architecural design, white paper framing.
 

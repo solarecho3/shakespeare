@@ -2,7 +2,7 @@ An InstructGPT-based model to talk to the bard.
 
 # question
 
-How could a GPT provide accurate, intelligence quality answers to specific prompts by users based on a corpus of provided data?
+Could a GPT provide accurate, intelligence quality answers to specific prompts by users based on a corpus of provided data?
 
 ## goal
 

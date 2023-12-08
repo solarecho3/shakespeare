@@ -4,8 +4,6 @@ modules/model.py
 
 ## development notes
 - 25 Jan 23. adam. initializing the repository, architecural design, white paper framing.
-
-	We've chosen the Model-View-Presenter as the base design in order to prepare this library for scaling to new datasets and implementations. The repository will come complete with a well-defined wiki, licensing, and other scale requirements. We want to try and future-proof the design from initialization. This design may change as the advantage becomes apparent.
 	
 - 7 Feb 23. adam. completing the model, optimizing for scale, hardware constraints.
 
